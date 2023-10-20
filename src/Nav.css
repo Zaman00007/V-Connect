@@ -1,0 +1,100 @@
+.Nav {
+    display: flex;
+    align-items: center;
+    background-color: #3498db; 
+    height: 50px;
+    padding: 0 20px;
+  }
+  
+  .menu__cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+  }
+  
+  .menu {
+    font-size: 24px;
+    color: #fff; 
+    cursor: pointer;
+  }
+  
+  .menu:hover {
+    color: #1e4a8b; 
+  }
+  
+  .logo__cont {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 15px;
+    height: 50px;
+  }
+  
+  .logo {
+    max-width: 100px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .search__cont {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #3498db; 
+    padding: 0 10px;
+    border-radius: 15px;
+  }
+  
+  
+  .search {
+    border: 2px solid #1e4a8b; 
+    outline: none;
+    flex: 1;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 20px;
+    width: 100%;
+    color: #1e4a8b; 
+    background-color: #fff; 
+  }
+  
+  
+  .search__btn {
+    background-color: #1e4a8b; 
+    border: none;
+    height: 30px;
+    width: 30px;
+    margin-left: -30px;
+    cursor: pointer;
+    color: #fff; 
+  }
+  
+  .bell {
+    position: relative;
+    font-size: 40px;
+    color: #fff;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    
+  }
+  
+  .search__icon {
+    font-size: large;
+  }
+  
+  .bell:hover {
+    color: #1e4a8b;
+    
+
+  }
+  
+  
+  @media (max-width: 768px) {
+    .search__cont {
+      margin-left: 10px;
+      padding: 0 5px;
+    }
+  }
+  
