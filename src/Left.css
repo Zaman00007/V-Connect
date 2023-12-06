@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 .Info {
   display: flex;
   flex-direction: column;
@@ -21,4 +20,4 @@
       width: auto; /* You might want to adjust the width for smaller screens */
   }
 }
->>>>>>> Stashed changes
+
