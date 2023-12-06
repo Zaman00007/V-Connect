@@ -11,6 +11,18 @@
     width: 100%;
   }
 
+  .submit{
+    border-radius: 5px;
+    background-color: #1e4a8b;
+    color: #ffffff;
+    
+    border: none;
+    height: auto;
+    width: 100px;
+    cursor: pointer;
+
+  }
+
   @media (max-width: 400px) {
     .Post {
         margin-left: 10px;
