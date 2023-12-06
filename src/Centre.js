@@ -3,11 +3,12 @@ import "./Centre.css";
 import Dialog from "./Dialog";
 
 function Centre({ names }) {
-  const [partner, setPartner] = useState("");
+  const [partner, setPartner] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const accept = (name) => {
     console.log("Invite accepted for " + name.event + " from " + name.id + "!");
+    setPartner(name);
   };
 
   const handleCreateClick = () => {
