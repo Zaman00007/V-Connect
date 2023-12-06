@@ -16,7 +16,7 @@ function Centre() {
       </div>
       <div className='Invites'>
           <h1>Invite 2</h1>
-          <h3>Rema Thakur</h3>
+          <h3>Rema Singh</h3>
           <p>Invite for the Basketball Tournament</p>
       </div>
       <div className='Invites'>
