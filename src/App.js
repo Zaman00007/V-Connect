@@ -10,8 +10,8 @@ function App() {
     <div className="App">
        <Nav className="App-header" />
        <div className="Hero">
-         <Left />
-         <Centre />
+         <Left className="Left-Row"/>
+         <Centre className="Centre"/>
        </div>
     </div>
 
