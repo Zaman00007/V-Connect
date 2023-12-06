@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
+  margin-bottom: 10px;
   
 
 }
@@ -27,9 +28,7 @@
   /* transition: transform 0.3s ease-in-out;  */
 }
 
-.Invite:click {
-  transform: scale(1.05); 
-}
+
 
 .submit {
   border-radius: 5px;
