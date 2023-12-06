@@ -20,9 +20,9 @@ function Dialog({ onClose }) {
       <div className="DialogBox">
         <h2>Invite Details</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label>
+          <label className="label">
             Event Name :
-            <input
+            <input className="input"
               name="eventName"
               autoComplete="off"
               {...register("eventName", {
@@ -31,9 +31,9 @@ function Dialog({ onClose }) {
             />
             {errors.eventName && errors.eventName.message}
           </label>
-          <label>
+          <label className="label">
             Event Date :
-            <input
+            <input className="input"
               name="eventDate"
               type="date"
               autoComplete="off"
@@ -43,9 +43,9 @@ function Dialog({ onClose }) {
             />
             {errors.eventDate && errors.eventDate.message}
           </label>
-          <label>
+          <label className="label">
             Event Time :
-            <input
+            <input className="input"
               name="eventTime"
               type="time"
               autoComplete="off"
@@ -57,7 +57,7 @@ function Dialog({ onClose }) {
           </label>
           <div className="buttons">
             <input type="submit" className="submit" />
-            <button onClick={onClose}>
+            <button className="button" onClick={onClose}>
               Close
             </button>
           </div>

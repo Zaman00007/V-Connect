@@ -25,18 +25,18 @@
     flex-direction: column;
   }
   
-  label {
+  .label {
     margin-bottom: 10px;
   }
   
-  input {
+  .input {
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
-  button {
+  .button {
     background-color: #a7b0bd;
     color: #ffffff;
     border: none;
@@ -47,7 +47,7 @@
     transition: background-color 0.3s ease-in-out;
   }
   
-  button:hover {
+  .button:hover {
     background-color: #00050a;
   }
 
