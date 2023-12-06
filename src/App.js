@@ -11,7 +11,7 @@ function App() {
     <div className="App">
        <Nav className="App-header" />
        <div className="Hero">
-         <Left className="Left-Row"/>
+         <Left className="Left"/>
          <Centre className="Centre"/>
           <Right className="Right"/>
        </div>
