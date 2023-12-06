@@ -1,22 +1,14 @@
-// Dialog.js
 import React from "react";
 import { useForm } from "react-hook-form";
 import "./Dialog.css";
 
 function Dialog({ onClose }) {
-  //   const { register, handleSubmit, errors } = useForm();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  //   const onSubmit = () => {
-  //     // Handle form submission logic here
-  //     console.log("Form submitted:");
-  //     // Close the dialog after form submission
-  //     onClose();
-  //   };
   const onSubmit = (values) => {
     console.log(values);
     console.log("Form Submitted");
