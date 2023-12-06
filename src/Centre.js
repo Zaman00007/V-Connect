@@ -13,16 +13,19 @@ function Centre() {
           <h1>Invite 1</h1>
           <h3>Sam Desai</h3>
           <p>Invite for the Dance-Event</p>
+          <button type="submit" className='submit'>Accept</button>
       </div>
       <div className='Invites'>
           <h1>Invite 2</h1>
           <h3>Rema Singh</h3>
           <p>Invite for the Basketball Tournament</p>
+          <button type="submit" className='submit'>Accept</button>
       </div>
       <div className='Invites'>
           <h1>Invite3</h1>
           <h3>Mansi Bhagoria</h3>
           <p>Invite for the hackathon</p>
+          <button type="submit" className='submit'>Accept</button>
       </div>
 
     </div>
