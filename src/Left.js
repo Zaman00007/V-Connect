@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import "./Left.css"
-=======
 import './Left.css'
->>>>>>> feature
 
 function Left() {
   return (
