@@ -1,10 +1,11 @@
 import React from 'react'
+import './Centre.css'
 
 function Centre() {
   return (
     <div className="Post">
-      <h2>Post Title</h2>
-      <p>Post Content</p>
+      <h1>Create Invite</h1>
+      <p>Send a new Invitation</p>
       
     </div>
   )

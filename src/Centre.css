@@ -1,0 +1,11 @@
+.Post {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: #ecf0f1; 
+    padding: 20px;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+    width: 100%;
+  }
