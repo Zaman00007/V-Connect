@@ -1,6 +1,24 @@
 .Post {
     display: flex;
     flex-direction: column;
+  }
+
+.Invite{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: #ecf0f1; 
+    padding: 20px;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+    width: 100%;
+}
+
+  .Invites{
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
     background-color: #ecf0f1; 
@@ -23,10 +41,11 @@
 
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 768px) {
     .Post {
         margin-left: 10px;
         padding: 0 5px;
     }
-  }
+    
+}
   
