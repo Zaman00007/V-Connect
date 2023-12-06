@@ -1,8 +1,9 @@
 import React from 'react';
+import "./Left.css"
 
 function Left() {
   return (
-    <div>
+    <div className='Info'>
       <h2>User Information</h2>
       <form>
         <div>
