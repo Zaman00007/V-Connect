@@ -12,7 +12,6 @@ function App() {
       <Nav className="App-header" />
       <div className="Hero">
         <Left className="Left" />
-        {/* <Centre className="Centre" names={[id={["Sam Desai", "Rema Thakur", "Mansi Bhagoria"]}, events={["Hackathon", "Dance-ball", "Bike-Rider"]}]}/> */}
         <Centre
           className="Centre"
           names={[
