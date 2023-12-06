@@ -37,7 +37,7 @@
   }
   
   button {
-    background-color: #1e4a8b;
+    background-color: #a7b0bd;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -48,7 +48,27 @@
   }
   
   button:hover {
-    background-color: #144274;
+    background-color: #00050a;
+  }
+
+  .submit{
+    background-color: #92b1e0;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease-in-out;
+
+  }
+  .submit:hover{
+    background-color: #1e4a8b;
+  }
+
+  .buttons{
+    display: flex;
+    justify-content: space-between;
   }
 
   

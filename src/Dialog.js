@@ -28,25 +28,48 @@ function Dialog({ onClose }) {
       <div className="DialogBox">
         <h2>Invite Details</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
-            Event Name
-          <input
-            name="message"
-            // type="submit"
-            autoComplete="off"
-            {...register("message", {
-              required: "Required",
-            })}
-          />
-          {errors.message && errors.message.message}
-          <input type="submit"/>
-        </label>
-
+          <label>
+            Event Name :
+            <input
+              name="eventName"
+              autoComplete="off"
+              {...register("eventName", {
+                required: "Required",
+              })}
+            />
+            {errors.eventName && errors.eventName.message}
+          </label>
+          <label>
+            Event Date :
+            <input
+              name="eventDate"
+              type="date"
+              autoComplete="off"
+              {...register("eventDate", {
+                required: "Required",
+              })}
+            />
+            {errors.eventDate && errors.eventDate.message}
+          </label>
+          <label>
+            Event Time :
+            <input
+              name="eventTime"
+              type="time"
+              autoComplete="off"
+              {...register("eventTime", {
+                required: "Required",
+              })}
+            />
+            {errors.eventTime && errors.eventTime.message}
+          </label>
+          <div className="buttons">
+            <input type="submit" className="submit" />
+            <button onClick={onClose}>
+              Close
+            </button>
+          </div>
         </form>
-
-        <button className="DialogCloseButton" onClick={onClose}>
-          Close
-        </button>
       </div>
     </div>
   );
