@@ -1,0 +1,21 @@
+.Info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: #ecf0f1; 
+  padding: 20px;
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+  width: 40%;
+  margin-right: auto; /* Add this line to stick the box to the right */
+}
+
+@media (max-width: 100px) {
+  .Info {
+      margin-right: 10px;
+      padding: 0 5px;
+      width: auto; /* You might want to adjust the width for smaller screens */
+  }
+}
