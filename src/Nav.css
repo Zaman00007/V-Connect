@@ -91,3 +91,34 @@
       padding: 0 5px;
   }
 }
+.menu__cont {
+  position: relative;
+}
+
+.dropdown__content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #3498db;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+
+.menu__cont:hover .dropdown__content {
+  display: flex;
+}
+
+.dropdown__content a {
+  text-decoration: none;
+  color: #fff;
+  padding: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.dropdown__content a:hover {
+  background-color: #1e4a8b;
+}

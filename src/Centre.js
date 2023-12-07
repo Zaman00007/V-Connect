@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 import "./Centre.css";
 import Dialog from "./Dialog";
+import Accept from "./Accept";
 
 function Centre({ names }) {
   const [partner, setPartner] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isAcceptOpen, setIsAcceptOpen] = useState(false);
 
   const accept = (name) => {
     console.log("Invite accepted for " + name.event + " from " + name.id + "!");
     setPartner(name);
+    setIsAcceptOpen(true);
   };
 
   const handleCreateClick = () => {
-    // Open the dialogue box
     setIsDialogOpen(true);
   };
 
   const handleCloseDialog = () => {
-    // Close the dialogue box
     setIsDialogOpen(false);
+    setIsAcceptOpen(false);
+    
   };
 
   return (
@@ -31,12 +34,9 @@ function Centre({ names }) {
         </button>
       </div>
 
-      {/* Dialogue Box */}
       {isDialogOpen && (
         <div className="Dialog">
-          
-          <Dialog onClose={handleCloseDialog}/>
-          
+          <Dialog onClose={handleCloseDialog} />
         </div>
       )}
 
@@ -54,6 +54,11 @@ function Centre({ names }) {
               Accept
             </button>
           </div>
+          {isAcceptOpen && (
+            <div className="Dialog">
+              <Accept onClose={handleCloseDialog} />
+            </div>
+          )}
         </React.Fragment>
       ))}
     </div>
