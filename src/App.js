@@ -17,7 +17,7 @@ function App() {
             <Nav className="App-header" />
 
             <div className="Hero">
-              <Left className="Left" name={{ username: 'John', age: 25, gender: 'male', year: 2022 }} />
+              <Left className="Left" name={{ username: 'Aviator', age: 25, gender: 'male', year: 2022 }} />
               <Centre
                 className="Centre"
                 names={[
