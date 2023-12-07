@@ -18,6 +18,7 @@ function App() {
             { id: "Sam Desai", event: "Hackathon" },
             { id: "Rema Thakur", event: "Dance-ball" },
             { id: "Mansi Bhagoria", event: "Bike-Rider" },
+            { id: "Ashutosh Dwivedi", event: "Differential Notes" },
           ]}
         />
 
