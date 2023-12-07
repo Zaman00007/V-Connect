@@ -3,6 +3,7 @@ import "./Nav.css";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsFillBellFill } from "react-icons/bs";
+import { Link } from "react-router-dom";  
 
 function Nav() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -26,11 +27,13 @@ function Nav() {
       </div>
 
       <div className="logo__cont">
+        <Link to="/">
         <img
           src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg"
           alt="YouTube Logo"
           className="logo"
         />
+        </Link>
       </div>
       <div className="search__cont">
         <input type="text" placeholder="Search" className="search" />
