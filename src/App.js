@@ -29,7 +29,7 @@ function App() {
               <Right className="Right" />
             </div>
           </Route>
-          <Route path="/about" >
+          <Route path="/about" exact>
             <About />
           </Route>
         </Switch>

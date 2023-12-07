@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function Right() {
   return (
-    <Router>
+  
       <div className="Events">
         <div className="events-heading">
           <h2>Events</h2>
@@ -18,7 +18,7 @@ function Right() {
 
         
       </div>
-    </Router>
+    
   );
 }
 
