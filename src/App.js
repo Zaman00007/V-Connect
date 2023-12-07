@@ -13,13 +13,8 @@ function App() {
       <div className="Hero">
         <Left 
           className="Left"
-          name={[
-            {userid:"Aviator1610 ", username: "Mansi Bhagoria", age: "18", gender: "female", year: "2nd"},
-
-
-         ]
-
-         } />
+         name={{ username: 'John', age: 25, gender: 'male', year: 2022 }} 
+          />
         <Centre
           className="Centre"
           names={[
