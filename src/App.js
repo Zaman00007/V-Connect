@@ -11,7 +11,15 @@ function App() {
     <div className="App">
       <Nav className="App-header" />
       <div className="Hero">
-        <Left className="Left" />
+        <Left 
+          className="Left"
+          name={[
+            {userid:"Aviator1610 ", username: "Mansi Bhagoria", age: "18", gender: "female", year: "2nd"},
+
+
+         ]
+
+         } />
         <Centre
           className="Centre"
           names={[
