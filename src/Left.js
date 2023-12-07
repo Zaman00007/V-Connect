@@ -28,6 +28,8 @@ function Left({name}) {
       <h2>Profile</h2>
     
       <p className='black'>{name.username}</p>
+      <p className='black'>{name.age}</p>
+      <p className='black'>{name.gender}</p>
     </div>
   );
 }
