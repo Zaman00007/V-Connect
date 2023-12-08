@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Accept.css";
 
 function Accept({onClose,name}) {
   return (
