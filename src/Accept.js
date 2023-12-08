@@ -8,7 +8,7 @@ function Accept({onClose,name}) {
       <h2>Event Details</h2>
             
         </div>
-        <div>
+        <div className="Button1">
         <button className="button" onClick={onClose}>
               Accept
             </button>
