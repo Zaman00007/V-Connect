@@ -6,12 +6,15 @@ function Accept({onClose,name}) {
     <div className="DialogOverlay">
       <div className="DialogBox">
       <h2>Event Details</h2>
-      <button className="button" onClick={onClose}>
+            
+        </div>
+        <div>
+        <button className="button" onClick={onClose}>
               Accept
             </button>
       <button className="button" onClick={onClose}>
         Close
-        </button>      
+        </button>  
         </div>
     </div>
   )
