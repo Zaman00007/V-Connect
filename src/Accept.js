@@ -7,14 +7,15 @@ function Accept({onClose,name}) {
       <div className="DialogBox">
       <h2>Event Details</h2>
             
-        </div>
+        
         <div className="Button1">
         <button className="button" onClick={onClose}>
               Accept
             </button>
       <button className="button" onClick={onClose}>
         Close
-        </button>  
+        </button>
+        </div>  
         </div>
     </div>
   )
