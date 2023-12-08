@@ -17,6 +17,9 @@ function Centre({ names }) {
   const handleCreateClick = () => {
     setIsDialogOpen(true);
   };
+  const details = () => {
+    setIsAcceptOpen(true);
+  };
 
   const handleCloseDialog = () => {
     setIsDialogOpen(false);
@@ -49,14 +52,14 @@ function Centre({ names }) {
             <button
               type="button"
               className="submit"
-              onClick={() => accept(name)}
+              onClick={details}
             >
               Details
             </button>
           </div>
           {isAcceptOpen && (
             <div className="Dialog">
-              <Accept onClose={handleCloseDialog} />
+              <Accept onClose={handleCloseDialog} onAccept={()=>accept(name)} />
             </div>
           )}
         </React.Fragment>

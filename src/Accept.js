@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Accept.css";
 
-function Accept({onClose,name}) {
+function Accept({onClose,name, onAccept}) {
   return (
     
     <div className="DialogOverlay">
@@ -10,7 +10,7 @@ function Accept({onClose,name}) {
             
         
         <div className="Button1">
-        <button className="button" onClick={onClose}>
+        <button className="button" onClick={onAccept}>
               Accept
             </button>
       <button className="button" onClick={onClose}>
