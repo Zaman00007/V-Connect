@@ -12,9 +12,10 @@ function App() {
   return (
     <Router>
       <div className="App">
+      <Nav className="App-header" />
         <Switch>
           <Route path="/" exact>
-            <Nav className="App-header" />
+            
 
             <div className="Hero">
               <Left className="Left" name={{ username: 'Aviator', age: 25, gender: 'male', year: 2022 }} />
