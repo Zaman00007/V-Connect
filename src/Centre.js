@@ -51,7 +51,7 @@ function Centre({ names }) {
               className="submit"
               onClick={() => accept(name)}
             >
-              Accept
+              Details
             </button>
           </div>
           {isAcceptOpen && (
