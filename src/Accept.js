@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Accept.css";
 
 function Accept({onClose,name}) {
   return (
@@ -6,12 +7,16 @@ function Accept({onClose,name}) {
     <div className="DialogOverlay">
       <div className="DialogBox">
       <h2>Event Details</h2>
-      <button className="button" onClick={onClose}>
+            
+        
+        <div className="Button1">
+        <button className="button" onClick={onClose}>
               Accept
             </button>
       <button className="button" onClick={onClose}>
         Close
-        </button>      
+        </button>
+        </div>  
         </div>
     </div>
   )
