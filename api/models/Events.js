@@ -2,15 +2,15 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const EventSchema = new mongoose.Schema({
-    name: {
+    eventName: {
         type: String,
         required: true,
     },
-    date: {
+    eventDate: {
         type: String,
         required: true,
     },
-    time: {
+    eventTime: {
         type: String,
         required: true,
     },

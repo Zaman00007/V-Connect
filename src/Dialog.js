@@ -15,6 +15,7 @@ function Dialog({ onClose }) {
   //   onClose();
   // };
   const onSubmit = async (values) => {
+    console.log(values);
     try {
       const response = await fetch("http://localhost:8800/events", {
         method: "POST",

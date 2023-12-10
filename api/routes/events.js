@@ -23,7 +23,9 @@ const router = express.Router();
 // Define your routes using the Event model
 
 router.post('/', async (req, res) => {
+    console.log(res.body);
     try {
+        console.log('POST /events called');
         const eventData = req.body;
         const newEvent = new Event(eventData);
         await newEvent.save();
