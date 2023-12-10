@@ -7,10 +7,11 @@ import cors from 'cors';
 
 const app = express();
 dotenv.config()
+app.use(cors());
 
 app.use(express.json());
 app.use("/events", eventRoute);
-app.use(cors());
+
 
 app.get("/", (req, res) => {
     res.json({ message: 'Hello from the backend!' });

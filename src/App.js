@@ -18,6 +18,7 @@ function App() {
       .then((data) => setData(data))
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
+  console.log(data);
   return (
     <Router>
       <div className="App">
