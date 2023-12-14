@@ -28,7 +28,7 @@ function Left({name}) {
     <div className='Info'>
       <h2>Profile</h2>
       <div className="profilepic">
-      <img src={ process.env.PUBLIC_URL+'/1.jpg'}  />
+      <img src='/1.jpg'  className="profilepic" />
       </div>
     
       <p className='black'>{name.username}</p>
