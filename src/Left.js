@@ -26,6 +26,9 @@ function Left({name}) {
   return (
     <div className='Info'>
       <h2>Profile</h2>
+      <div className="profilepic">
+      <img src={imageUrl} alt={altText} />
+      </div>
     
       <p className='black'>{name.username}</p>
       <p className='black'>{name.age}</p>
