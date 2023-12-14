@@ -10,6 +10,9 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
     width: 20%;
     height: 40%;
+
+
+  
   }
   
   @media (max-width: 768px) {
@@ -22,3 +25,12 @@
   .black{
     color: black;
   }
+
+  .profilepic{
+    width: 120px; /* Set the size of the circular container */
+  height: 120px;
+  border-radius: 50%; /* Make the container circular */
+  overflow: hidden; /* Hide the parts of the image outside the circular container */
+  border: 2px solid #fff; /* Optional: add a border to the container */
+}
+  

@@ -2,6 +2,7 @@ import React from 'react';
 import './Left.css'
 import { useState } from 'react';
 
+
 function Left({name}) {
 
   const [partner, setPartner] = useState(null);
@@ -26,6 +27,9 @@ function Left({name}) {
   return (
     <div className='Info'>
       <h2>Profile</h2>
+      <div className="profilepic">
+      <img src='/1.jpg'  className="profilepic" />
+      </div>
     
       <p className='black'>{name.username}</p>
       <p className='black'>{name.age}</p>
