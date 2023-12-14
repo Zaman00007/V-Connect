@@ -9,11 +9,33 @@ function Dialog({ onClose }) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (values) => {
+  // const onSubmit = (values) => {
+  //   console.log(values);
+  //   console.log("Form Submitted");
+  //   onClose();
+  // };
+  const onSubmit = async (values) => {
     console.log(values);
-    console.log("Form Submitted");
-    onClose();
+    try {
+      const response = await fetch("http://localhost:8800/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+  
+      if (response.ok) {
+        console.log("Form data sent successfully");
+        onClose();
+      } else {
+        console.error("Failed to send form data");
+      }
+    } catch (error) {
+      console.error("Error sending form data", error);
+    }
   };
+  
 
   return (
     <div className="DialogOverlay">
