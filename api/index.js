@@ -2,6 +2,10 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import eventRoute from './routes/events.js';
+import bodyParser from 'body-parser';
+import multer from 'multer';
+import userRoute from './routes/users.js';
+
 import cors from 'cors';
 
 
@@ -11,6 +15,7 @@ app.use(cors());
 
 app.use(express.json());
 app.use("/events", eventRoute);
+app.use("/users", userRoute);
 
 
 app.get("/", (req, res) => {
