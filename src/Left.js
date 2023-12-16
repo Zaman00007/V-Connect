@@ -28,7 +28,7 @@ function Left({name}) {
     <div className='Info'>
       <h2>Profile</h2>
       <div className="profilepic">
-      <img src='/1.jpg'  className="profilepic" />
+      <img src='/2.jpg'  className="profilepic" />
       </div>
     
       <p className='black'>{name.username}</p>
