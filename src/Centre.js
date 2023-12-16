@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import "./Centre.css";
 import Dialog from "./Dialog";
 import Accept from "./Accept";
-
 
 function Centre({ names }) {
   const [events, setEvents] = useState([]);
@@ -11,7 +10,13 @@ function Centre({ names }) {
   const [isAcceptOpen, setIsAcceptOpen] = useState(false);
 
   const accept = (event) => {
-    console.log("Invite for " + event.eventName + " accepted on the date " + event.eventDate + "!");
+    console.log(
+      "Invite for " +
+        event.eventName +
+        " accepted on the date " +
+        event.eventDate +
+        "!"
+    );
     setIsAcceptOpen(true);
   };
 
@@ -25,26 +30,24 @@ function Centre({ names }) {
   const handleCloseDialog = () => {
     setIsDialogOpen(false);
     setIsAcceptOpen(false);
-    
   };
- 
+
   useEffect(() => {
     // Fetch event data when the component mounts
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('http://localhost:8800/events');
+        const response = await axios.get("http://localhost:8800/events");
 
         if (response.data) {
           setEvents(response.data);
         }
       } catch (error) {
-        console.error('Error fetching event data', error);
+        console.error("Error fetching event data", error);
       }
     };
 
     fetchEvents();
   }, [events]);
-  
 
   return (
     <div className="Post">
@@ -68,17 +71,16 @@ function Centre({ names }) {
             <h1>Invite {index + 1}</h1>
             <h3>{event.eventDate}</h3>
             <p>Invite for the {event.eventName}</p>
-            <button
-              type="button"
-              className="submit"
-              onClick={details}
-            >
+            <button type="button" className="submit" onClick={details}>
               Details
             </button>
           </div>
           {isAcceptOpen && (
             <div className="Dialog">
-              <Accept onClose={handleCloseDialog} onAccept={()=>accept(event)} />
+              <Accept
+                onClose={handleCloseDialog}
+                onAccept={() => accept(event)}
+              />
             </div>
           )}
         </React.Fragment>

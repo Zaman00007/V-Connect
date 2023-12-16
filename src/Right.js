@@ -11,9 +11,13 @@ function Right() {
         <div className="events-heading">
           <h2>Events</h2>
         </div>
-        <div className="about-link">
-          
-          <Link to="/about">About</Link>
+        <div className="link">
+          <div className="about">
+            <Link to="/about">About</Link>
+          </div>
+          <div className="login">
+            <Link to="/Signup">Sign Up</Link>
+          </div>
         </div>
 
         

@@ -1,36 +1,80 @@
-import React from 'react';
-import './Left.css'
-import { useState } from 'react';
+// import React from 'react';
+// import './Left.css'
+// import { useState } from 'react';
+// import { useEffect } from 'react';
+// import axios from 'axios';
 
 
-function Left({name}) {
+// function Left({name}) {
 
-  const [partner, setPartner] = useState(null);
-  //const [isDialogOpen, setIsDialogOpen] = useState(false);
-  //const [isAcceptOpen, setIsAcceptOpen] = useState(false);
+//   const [partner, setPartner] = useState(null);
+//   const [profilePic, setProfilePic] = useState(null);
+//   const [username, setUsername] = useState("Shahid");
 
-  // const accept = (name) => {
-  //   console.log("Userid: " + name.userid + " Username:" + name.username + "Age:"+name.age+"Gender: "+name.gender+"Year: "+name.year);
-  //   setPartner(name);
+//   const getProfilePic = async () => {
+//     try {
+//       const response = await axios.get(`http://localhost:8800/profile-pic/${username}`);
+//       setProfilePic(response.data);
+//     } catch (error) {
+//       console.error('Error fetching profile picture:', error);
+//     }
+//   };
+
+//   useEffect(() => {
+//     getProfilePic();
+//   }, [username]);
+//   return (
+//     <div className='Info'>
+//       <h2>Profile</h2>
+//       <div className="profilepic">
+//       <img src='/2.jpg'  className="profilepic" />
+//       </div>
     
-  // };
+//       <p className='black'>{name.username}</p>
+//       <p className='black'>{name.age}</p>
+//       <p className='black'>{name.gender}</p>
+//     </div>
+//   );
+// }
 
-  /*const handleCreateClick = () => {
-    setIsDialogOpen(true);
+// export default Left;
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Left.css';
+
+function Left({ name }) {
+  const [profilePic, setProfilePic] = useState(null);
+  const [username, setUsername] = useState("Shahid");
+
+  const getProfilePic = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8800/users/profile-pic/${username}`, {
+        responseType: 'arraybuffer',
+      });
+
+      const arrayBufferView = new Uint8Array(response.data);
+      const blob = new Blob([arrayBufferView], { type: 'image/jpeg' });
+      const imageUrl = URL.createObjectURL(blob);
+
+      setProfilePic(imageUrl);
+    } catch (error) {
+      console.error('Error fetching profile picture:', error);
+    }
   };
 
-  const handleCloseDialog = () => {
-    setIsDialogOpen(false);
-    setIsAcceptOpen(false);
-    
-  };*/
+  useEffect(() => {
+    getProfilePic();
+  }, [username]);
+
   return (
     <div className='Info'>
       <h2>Profile</h2>
       <div className="profilepic">
-      <img src='/2.jpg'  className="profilepic" />
+        {/* Use the state variable for the profile picture */}
+        <img src={profilePic || '/2.jpg'} className="profilepic" alt="Profile" />
       </div>
-    
+
       <p className='black'>{name.username}</p>
       <p className='black'>{name.age}</p>
       <p className='black'>{name.gender}</p>
@@ -39,4 +83,3 @@ function Left({name}) {
 }
 
 export default Left;
-

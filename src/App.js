@@ -5,6 +5,7 @@ import Home from "./Home";
 import Left from "./Left";
 import Centre from "./Centre";
 import Right from "./Right";
+import Signup from "./Signup";
 import { BrowserRouter as Router, Routes, Route, Switch } from "react-router-dom";
 import About from "./About";
 import { useState, useEffect } from 'react';
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route path="/about" exact>
             <About />
+          </Route>
+          <Route path="/Signup" exact>
+            <Signup />
           </Route>
         </Switch>
       </div>
