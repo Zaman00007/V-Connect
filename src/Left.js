@@ -24,7 +24,7 @@ function Left({ name }) {
         setProfilePic(imageUrl);
       }
     } catch (error) {
-      console.error('Error fetching user details:', error);
+      console.log("Sign up and connect to your Mates now!!! ")
     }
   };
 
@@ -37,12 +37,12 @@ function Left({ name }) {
       <h2>Profile</h2>
       <div className="profilepic">
         {/* Use the state variable for the profile picture */}
-        <img src={profilePic || '/2.jpg'} className="profilepic" alt="Profile" />
+        <img src={profilePic || '/5.png'} className="profilepic" alt="Profile" />
       </div>
 
-      <p className='black'>{userData.username}</p>
-      <p className='black'>{userData.age}</p>
-      <p className='black'>{userData.gender}</p>
+      <p className='black'>{userData.username || "User"}</p>
+      <p className='black'>{userData.age || 18}</p>
+      <p className='black'>{userData.gender || "Male"}</p>
     </div>
   );
 }
