@@ -19,7 +19,7 @@ function About() {
       <div className='About'>  
         
         <div className='logo_cont'>
-        <img src="./1.jpg" alt="pic 1" className="logo" />
+        <img src="./3.png" alt="pic 1" className="logo" />
         <div className='logo_text'>
             <h1>MANSI BHAGORIA</h1>
             <p>Web-Developer</p>

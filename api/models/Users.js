@@ -15,6 +15,20 @@ const UserSchema = new mongoose.Schema({
     profilePic: {
         type: String,
     },
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+    gender: {
+        type: String,
+        required: true,
+    },
+    age: {
+        type: Number,
+        required: true,
+        min: 14,
+        max: 85,
+    },
 });
 
 export default mongoose.model("User", UserSchema);
