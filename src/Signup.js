@@ -6,7 +6,6 @@ import App from "./App";
 import { useHistory } from "react-router-dom";
 
 function Signup() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const history = useHistory();
   const {
     register,
@@ -54,7 +53,7 @@ function Signup() {
             Username:
             <input
               className="input"
-              {...register("username", { required: "Required" })}
+              {...register("username", { required: "Invalid Username" })}
             />
             {errors.username && (
               <span className="error">{errors.username.message}</span>
@@ -65,7 +64,7 @@ function Signup() {
             <input
               className="input"
               type="password"
-              {...register("password", { required: "Required" })}
+              {...register("password", { required: "Weak Password" })}
             />
             {errors.password && (
               <span className="error">{errors.password.message}</span>

@@ -1,3 +1,9 @@
 .error{
-    color: red;
+    color: rgb(174, 42, 42);
+    font-weight: 100;
+}
+
+.label{
+    justify-content: center;
+    font-weight: 500;
 }

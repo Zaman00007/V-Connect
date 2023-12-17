@@ -1,7 +1,7 @@
 .Nav {
   display: flex;
   align-items: center;
-  background-color: #3498db; 
+  background-color: rgb(93, 78, 109); /* Dark purple color for the navigation bar */
   height: 50px;
   padding: 0 20px;
 }
@@ -15,12 +15,12 @@
 
 .menu {
   font-size: 24px;
-  color: #fff; 
+  color: #fff;
   cursor: pointer;
 }
 
 .menu:hover {
-  color: #1e4a8b; 
+  color: rgb(79, 52, 90); /* Dark purple color on hover */
 }
 
 .logo__cont {
@@ -41,32 +41,32 @@
   margin-left: 20px;
   display: flex;
   align-items: center;
-  width: 60%; /* Adjusted width to reduce the search bar length */
-  background-color: #3498db; 
+  width: 60%;
+  background-color: rgb(93, 78, 109); /* Dark purple color for the search bar */
   padding: 0 10px;
   border-radius: 15px;
 }
 
 .search {
-  border: 2px solid #1e4a8b; 
+  border: 2px solid rgb(79, 52, 90); /* Dark purple border color */
   outline: none;
   flex: 1;
   padding: 5px 10px;
   font-size: 14px;
   border-radius: 20px;
   width: 100%;
-  color: #1e4a8b; 
-  background-color: #fff; 
+  color: rgb(79, 52, 90); /* Dark purple text color */
+  background-color: #fff;
 }
 
 .search__btn {
-  background-color: #1e4a8b; 
+  background-color: rgb(79, 52, 90); /* Dark purple color for the button */
   border: none;
   height: 30px;
   width: 30px;
   margin-left: -30px;
   cursor: pointer;
-  color: #fff; 
+  color: #fff;
 }
 
 .bell {
@@ -82,15 +82,16 @@
 }
 
 .bell:hover {
-  color: #1e4a8b;
+  color: rgb(79, 52, 90); /* Dark purple color on hover */
 }
 
 @media (max-width: 768px) {
   .search__cont {
-      margin-left: 10px;
-      padding: 0 5px;
+    margin-left: 10px;
+    padding: 0 5px;
   }
 }
+
 .menu__cont {
   position: relative;
 }
@@ -99,7 +100,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #3498db;
+  background-color: rgb(93, 78, 109); /* Dark purple color for the dropdown */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
   display: none;
@@ -120,5 +121,5 @@
 }
 
 .dropdown__content a:hover {
-  background-color: #1e4a8b;
+  background-color: rgb(79, 52, 90); /* Dark purple color on hover */
 }

@@ -29,7 +29,8 @@ function Nav() {
       <div className="logo__cont">
         <Link to="/">
         <img
-          src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg"
+          // src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg"
+          src="/7eRnaH01.svg"
           alt="YouTube Logo"
           className="logo"
         />

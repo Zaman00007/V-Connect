@@ -3,13 +3,16 @@
   flex-direction: column;
   width:80%;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 10px;
-  
+  padding: 20px;
+  overflow-y: scroll;
 
+}
+
+.Post::-webkit-scrollbar {
+  display: none;
 }
 
 .Invite, .Invites {
@@ -18,14 +21,12 @@
   justify-content: space-between;
   align-items: center;
   background-color: #ecf0f1;
-  /* padding: 20px; */
-  /* margin: 10px; */
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); */
   width:100%;
   margin-top: 10px;
   margin-bottom: 10px;
-  /* transition: transform 0.3s ease-in-out;  */
+  object-fit: contain;
 }
 
 
