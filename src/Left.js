@@ -35,7 +35,7 @@ function Left({ name }) {
   return (
     <div className='Info'>
       <h2>Profile</h2>
-      <div className="profilepic">
+      <div className='profile_cont'>
         {/* Use the state variable for the profile picture */}
         <img src={profilePic || '/5.png'} className="profilepic" alt="Profile" />
       </div>

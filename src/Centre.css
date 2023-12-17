@@ -2,13 +2,11 @@
   display: flex;
   flex-direction: column;
   width:80%;
-  margin: 0 auto;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 10px;
   padding: 20px;
   overflow-y: scroll;
-
 }
 
 .Post::-webkit-scrollbar {
@@ -20,20 +18,28 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: #ecf0f1;
+  background-color: rgb(156, 191, 167, 0.6);
   border-radius: 15px;
   /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); */
   width:100%;
   margin-top: 10px;
   margin-bottom: 10px;
   object-fit: contain;
+  overflow-y: scroll;
+  
+}
+.Invite::-webkit-scrollbar {
+  display: none;
+}
+.Invites::-webkit-scrollbar {
+  display: none;
 }
 
 
 
 .submit {
   border-radius: 5px;
-  background-color: #1e4a8b;
+  background-color: rgb(79, 52, 90);
   color: #ffffff;
   border: none;
   height: 20px;
@@ -44,11 +50,14 @@
 }
 
 .submit:hover {
-  background-color: #144274; /* Darker color on hover */
+  background-color: rgb(93, 78, 109); /* Darker color on hover */
 }
 
 @media (max-width: 768px) {
   .Post {
     width: 80%;
+  }
+  .Invite, .Invites {
+    max-height: 100px;
   }
 }
