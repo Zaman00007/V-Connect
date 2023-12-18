@@ -2,6 +2,7 @@ import express from 'express';
 import User from '../models/Users.js'; // Import the User model
 import multer from 'multer';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 const upload = multer();
@@ -34,29 +35,22 @@ router.post('/signup', upload.single('profilePic'), async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-router.post('/login', upload.single('profilePic'), async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
-      const { username, password, gender, age } = req.body;
-      const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(password , salt);
-      const existingUser = await User.findOne({ username });
-      if (existingUser) {
-          return res.status(400).json({ message: 'Username already exists' });
+      const { username } = req.body;
+      
+      const existingUser = await User.findOne( {username} );
+      if (!existingUser) {
+          return res.status(400).json({ message: 'User does not exist' });
       }
-      const newUser = new User({
-          username: username,
-          password: hash,
-          gender :gender,
-          age : age,
-      });
-      if (req.file) {
-          const profilePicBuffer = req.file.buffer;
-          const profilePicBase64 = profilePicBuffer.toString('base64');
-          newUser.profilePic = profilePicBase64;
+      const isValidPassword = bcrypt.compareSync(req.body.password, existingUser.password);
+      if (!isValidPassword) {
+          return res.status(400).json({ message: 'Invalid password' });
       }
-      await newUser.save();
+      const {password, isAdmin, ...rest }=  existingUser._doc;
 
-      res.status(201).json({ message: 'Signup successful' });
+
+     res.status(200).json({ ...rest })
   } catch (error) {
       console.error('Error during signup', error);
       res.status(500).json({ error: 'Internal Server Error' });
@@ -71,12 +65,10 @@ router.get('/profile-pic/:username', async (req, res) => {
       if (!user || !user.profilePic) {
         return res.status(404).json({ message: 'Profile picture not found' });
       }
-  
-      // Assuming profilePic is stored as a base64 string
       const base64Image = user.profilePic;
       const imageBuffer = Buffer.from(base64Image, 'base64');
       res.writeHead(200, {
-        'Content-Type': 'image/jpg', // Adjust content type based on your file type
+        'Content-Type': 'image/jpg',
         'Content-Length': imageBuffer.length,
       });
       res.end(imageBuffer);
