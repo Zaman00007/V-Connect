@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Accept.css";
 
-function Accept({onClose,name, onAccept}) {
+function Accept({onClose, onAccept}) {
   return (
     
     <div className="DialogOverlay">

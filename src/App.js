@@ -24,7 +24,7 @@ function App() {
     <Router>
       <div className="App">
       <Nav className="App-header" />
-        <img src="/4.jpg" className="Background" alt="background" />
+        {/* <img src="/4.jpg" className="Background" alt="background" /> */}
         <Switch>
           <Route path="/" exact>
             
