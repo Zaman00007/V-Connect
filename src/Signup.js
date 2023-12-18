@@ -28,7 +28,7 @@ function Signup() {
       formData.append("age", data.age);
       formData.append("profilePic", data.profilePic[0]);
 
-      const response = await fetch("http://localhost:8800/users", {
+      const response = await fetch("http://localhost:8800/users/signup", {
         method: "POST",
         body: formData,
       });

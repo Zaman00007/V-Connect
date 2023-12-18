@@ -1,36 +1,31 @@
 import express from 'express';
 import User from '../models/Users.js'; // Import the User model
 import multer from 'multer';
+import bcrypt from 'bcryptjs';
 
 const router = express.Router();
 const upload = multer();
 
-router.post('/', upload.single('profilePic'), async (req, res) => {
+router.post('/signup', upload.single('profilePic'), async (req, res) => {
     try {
         const { username, password, gender, age } = req.body;
-
-        // Check if the username already exists
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(password , salt);
         const existingUser = await User.findOne({ username });
         if (existingUser) {
             return res.status(400).json({ message: 'Username already exists' });
         }
-
-        // Create a new user
         const newUser = new User({
-            username,
-            password,
-            gender,
-            age,
+            username: username,
+            password: hash,
+            gender :gender,
+            age : age,
         });
-
-        // Save the profile picture if it exists
         if (req.file) {
             const profilePicBuffer = req.file.buffer;
             const profilePicBase64 = profilePicBuffer.toString('base64');
             newUser.profilePic = profilePicBase64;
         }
-
-        // Save the user to the database
         await newUser.save();
 
         res.status(201).json({ message: 'Signup successful' });
@@ -38,6 +33,34 @@ router.post('/', upload.single('profilePic'), async (req, res) => {
         console.error('Error during signup', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+router.post('/login', upload.single('profilePic'), async (req, res) => {
+  try {
+      const { username, password, gender, age } = req.body;
+      const salt = bcrypt.genSaltSync(10);
+      const hash = bcrypt.hashSync(password , salt);
+      const existingUser = await User.findOne({ username });
+      if (existingUser) {
+          return res.status(400).json({ message: 'Username already exists' });
+      }
+      const newUser = new User({
+          username: username,
+          password: hash,
+          gender :gender,
+          age : age,
+      });
+      if (req.file) {
+          const profilePicBuffer = req.file.buffer;
+          const profilePicBase64 = profilePicBuffer.toString('base64');
+          newUser.profilePic = profilePicBase64;
+      }
+      await newUser.save();
+
+      res.status(201).json({ message: 'Signup successful' });
+  } catch (error) {
+      console.error('Error during signup', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 router.get('/profile-pic/:username', async (req, res) => {
