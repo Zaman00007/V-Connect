@@ -1,14 +1,12 @@
 import express from 'express';
-import User from '../models/Users.js'; // Import the User model
+import User from '../models/Users.js'; 
 import multer from 'multer';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { verifyToken } from '../utils/verifyToken.js';
-import { useState } from 'react';
 
 const router = express.Router();
 const upload = multer();
-
 
 router.post('/signup', upload.single('profilePic'), async (req, res) => {
     try {
@@ -19,12 +17,7 @@ router.post('/signup', upload.single('profilePic'), async (req, res) => {
         if (existingUser) {
             return res.status(400).json({ message: 'Username already exists' });
         }
-        const newUser = new User({
-            username: username,
-            password: hash,
-            gender :gender,
-            age : age,
-        });
+        const newUser = new User({username: username, password: hash, gender :gender, age : age, });
         if (req.file) {
             const profilePicBuffer = req.file.buffer;
             const profilePicBase64 = profilePicBuffer.toString('base64');
@@ -57,7 +50,7 @@ router.post('/login', async (req, res) => {
 
      res.cookie("access_token", token, {
       httpOnly: true,
-      // maxAge: 24 * 60 * 60 * 1000,
+      maxAge: 24 * 60 * 60 * 1000,
       // secure: true,
       // sameSite: "none",
      }).status(200).json({ ...rest })
@@ -69,7 +62,6 @@ router.post('/login', async (req, res) => {
 });
 
 router.get("/check", verifyToken, (req, res, next) => {
-  
   res.json({message : "Valid Token"});
 })
 
@@ -92,10 +84,9 @@ router.get('/profile-pic/:username', async (req, res) => {
       console.error('Error fetching profile picture:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
-  });
+});
 
-
-  router.get('/:username', async (req, res) => {
+router.get('/:username', async (req, res) => {
     try {
         
         const { username } = req.params;
@@ -110,5 +101,4 @@ router.get('/profile-pic/:username', async (req, res) => {
     }
 });
   
-
 export default router;
