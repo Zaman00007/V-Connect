@@ -3,7 +3,7 @@ import User from '../models/Users.js';
 import multer from 'multer';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { verifyToken } from '../utils/verifyToken.js';
+import { verifyToken, verifyAdmin } from '../utils/verifyToken.js';
 
 const router = express.Router();
 const upload = multer();
@@ -62,7 +62,10 @@ router.post('/login', async (req, res) => {
 });
 
 router.get("/check", verifyToken, (req, res, next) => {
-  res.json({message : "Valid Token"});
+  res.json({message : "Congo you are logged in!!!"});
+})
+router.get("/checkAdmin", verifyAdmin, (req, res, next) => {
+  res.json({message : "Congo you are Admin!!!"});
 })
 
 router.get('/profile-pic/:username', async (req, res) => {

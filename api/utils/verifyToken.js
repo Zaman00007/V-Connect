@@ -11,9 +11,17 @@ export const verifyToken = (req, res, next) => {
         if (err) {
             return res.status(401).json({ message: "Invalid token" });
         }
-
-        // Attach the decoded user information to the request object
         req.user = decoded;
-        next(); // Call next() inside the callback
+        next(); 
     });
 };
+
+export const verifyAdmin = (req, res, next) => {
+    verifyToken (req, res, next, ()=>{
+        // return res.json({message: "Hello"});
+    if (!req.user.isAdmin) {
+        return res.status(401).json({ message: "You need to be an admin" });
+    }
+    next();
+})
+}
