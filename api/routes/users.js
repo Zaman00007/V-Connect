@@ -3,9 +3,12 @@ import User from '../models/Users.js'; // Import the User model
 import multer from 'multer';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { verifyToken } from '../utils/verifyToken.js';
+import { useState } from 'react';
 
 const router = express.Router();
 const upload = multer();
+
 
 router.post('/signup', upload.single('profilePic'), async (req, res) => {
     try {
@@ -47,15 +50,28 @@ router.post('/login', async (req, res) => {
       if (!isValidPassword) {
           return res.status(400).json({ message: 'Invalid password' });
       }
+      const token = jwt.sign({ id: existingUser._id, isAdmin: existingUser.isAdmin }, process.env.JWT); 
+
       const {password, isAdmin, ...rest }=  existingUser._doc;
+      
 
-
-     res.status(200).json({ ...rest })
+     res.cookie("access_token", token, {
+      httpOnly: true,
+      // maxAge: 24 * 60 * 60 * 1000,
+      // secure: true,
+      // sameSite: "none",
+     }).status(200).json({ ...rest })
+    
   } catch (error) {
       console.error('Error during signup', error);
       res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+router.get("/check", verifyToken, (req, res, next) => {
+  
+  res.json({message : "Valid Token"});
+})
 
 router.get('/profile-pic/:username', async (req, res) => {
     try {
@@ -77,9 +93,11 @@ router.get('/profile-pic/:username', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+
   router.get('/:username', async (req, res) => {
     try {
-        // Extract the username from the request parameters
+        
         const { username } = req.params;
         const user = await User.findOne({ username });
         if (!user) {

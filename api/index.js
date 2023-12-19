@@ -5,13 +5,15 @@ import eventRoute from './routes/events.js';
 import bodyParser from 'body-parser';
 import multer from 'multer';
 import userRoute from './routes/users.js';
-
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
 
 const app = express();
 dotenv.config()
 app.use(cors());
+
+app.use(cookieParser());
 
 app.use(express.json());
 app.use("/events", eventRoute);
