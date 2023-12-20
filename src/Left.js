@@ -4,7 +4,7 @@ import './Left.css';
 
 function Left({ name }) {
   const [profilePic, setProfilePic] = useState(null);
-  const [username, setUsername] = useState("mansibhagoria");
+  const [username, setUsername] = useState("Imran");
   const [userData, setUserData] = useState({}); 
 
   const getUserDetails = async () => {
