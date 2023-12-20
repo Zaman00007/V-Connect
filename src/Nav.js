@@ -30,8 +30,8 @@ function Nav() {
         <Link to="/">
         <img
           // src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg"
-          src="/7eRnaH01.svg"
-          alt="YouTube Logo"
+          src="v.png"
+          alt="Logo"
           className="logo"
         />
         </Link>
