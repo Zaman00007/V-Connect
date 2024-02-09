@@ -4,21 +4,39 @@
     width:100%;
 }
 .head{
-    /* width: 943px;
-    height: 392px; */
-    left: 300px;
-    text-align: center;
     font-family: Public Sans;
-    /* font-size: 200px; */
+    font-size: 120px;
     font-weight: 722;
-    line-height: 100px;
+    line-height: 120px;
     letter-spacing: 0em;
-    /* text-align: left; */
-
+    width: 50%;
+    position: fixed;
+    right:100px;
+    color: rgba(243, 242, 220, 1);
+    ;   
 }
 
 .logo{
+    position: fixed;
+    top:20%;
+    width: 50%;
     margin-top: 2%;
     justify-content: center;
     align-items: center;
+    
+}
+
+input{
+    width: 100px;
+    height: 40px;
+    top: 550px;
+    left: 862px;
+    border-radius: 20px;
+    background: rgba(217, 217, 217, 0.46);
+
+
+}
+
+button{
+
 }
