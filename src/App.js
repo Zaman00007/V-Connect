@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Nav from "./Nav";
-// import Home from "./Home";
+import Home from "./Home";
 import Left from "./Left";
 import Centre from "./Centre";
 import Right from "./Right";
@@ -24,11 +24,15 @@ function App() {
   return (
     <Router>
       <div className="App">
-      <Nav className="App-header" />
+      
         {/* <img src="/4.jpg" className="Background" alt="background" /> */}
         <Switch>
-          <Route path="/" exact>
-            
+        <Route path="/" exact>
+          <Home/>
+        </Route>
+
+          <Route path="/feed" exact>
+          <Nav className="App-header" />
 
             <div className="Hero">
               <Left className="Left" name={{ username: 'Aviator', age: 25, gender: 'male', year: 2022 }} />
@@ -44,9 +48,11 @@ function App() {
             </div>
           </Route>
           <Route path="/about" exact>
+          <Nav className="App-header" />
             <About />
           </Route>
           <Route path="/Signup" exact>
+          <Nav className="App-header" />
             <Signup />
           </Route>
         </Switch>
