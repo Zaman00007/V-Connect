@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Centre.css";
-import Dialog from "./Dialog";
-import Accept from "./Accept";
+import Dialog from "../Dialog/Dialog";
+import Accept from "../Accept/Accept";
 
 function Centre({ names }) {
   const [events, setEvents] = useState([]);

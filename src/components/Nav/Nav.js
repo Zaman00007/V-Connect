@@ -14,6 +14,10 @@ function Nav() {
 
   return (
     <nav className="Nav">
+
+      <div className="logo1">
+        <img src="" alt="logo"></img>
+      </div>
       <div className="menu__cont">
         <AiOutlineMenu className="menu" onClick={toggleDropdown} />
         {isDropdownOpen && (
@@ -26,7 +30,7 @@ function Nav() {
         )}
       </div>
 
-      <div className="logo__cont">
+      {/* <div className="logo__cont">
         <Link to="/">
         <img
           src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg"
@@ -34,14 +38,14 @@ function Nav() {
           className="logo"
         />
         </Link>
-      </div>
-      <div className="search__cont">
+      </div> */}
+      {/* <div className="search__cont">
         <input type="text" placeholder="Search" className="search" />
         <button type="submit" className="search__btn">
           <AiOutlineSearch className="search__icon" />
         </button>
       </div>
-      <BsFillBellFill className="bell" />
+      <BsFillBellFill className="bell" /> */}
     </nav>
   );
 }
