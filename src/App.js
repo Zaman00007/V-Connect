@@ -59,13 +59,14 @@
 // export default App;
 
 import React from 'react'
-import Landing from './components/Landing/Landing';
-
+// import Landing from './components/Landing/Landing';
+import Allevents from './components/Allevents/Allevents'
 
 const App = () => {
   return (
     <div>
-      <Landing/>
+      {/* <Landing/> */}
+      <Allevents/>
     </div>
   )
 }

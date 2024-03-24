@@ -31,11 +31,11 @@ const Landing = () => {
       
 
       <div className="buttons-section">
-          <button>Username</button>
-          <button>Password</button>
-          <button>Submit</button>
-          <button>Forgot Password?</button>
-          <button>Sign Up</button>
+          <button id="button1">Username</button>
+          <button id="button2">Password</button>
+          <button id="button3">Submit</button>
+          <button id="button4">Forgot Password?</button>
+          <button id="button5">Sign Up</button>
         </div>
 
 
