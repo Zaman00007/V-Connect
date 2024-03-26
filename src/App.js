@@ -60,13 +60,18 @@
 
 import React from 'react'
 // import Landing from './components/Landing/Landing';
-import Allevents from './components/Allevents/Allevents'
+// import Allevents from './components/Allevents/Allevents'
+// import Createevents from './components/Createevents/Createevents'
+// import Friends from './components/Friends/Friends'
+// import Aboutus from './components/Aboutus/Aboutus'
+import Home from './components/Home/Home'
 
 const App = () => {
   return (
     <div>
       {/* <Landing/> */}
-      <Allevents/>
+      {/* <Aboutus/> */}
+      <Home/>
     </div>
   )
 }

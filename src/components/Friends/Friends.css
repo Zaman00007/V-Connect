@@ -180,5 +180,103 @@
   .accept-button:hover {
     color: #4F2671;
   }
+  .content-container {
+    display: flex;
+  }
+  
+ 
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .event-form {
+    background-color: #2FC3CD;
+    border-radius: 15px;
+    padding: 20px;
+  }
+  
+  .event-form h2 {
+    color: white;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input,
+  .input-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+  
+  .input-group textarea {
+    resize: none;
+  }
+  
+  button[type="submit"] {
+    background-color: white;
+    color: #2FC3CD;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #4F2671;
+    color: white;
+  }
+
+  .header {
+    background-color: #490754;
+    border-radius: 15px;
+    padding: 10px;
+    display:flex;
+    flex:column;
+  }
+  
+  .friend-request {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #2FC3CD;
+    margin-right: 10px;
+  }
+  
+  .username {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .action-buttons button {
+    background-color: #2FC3CD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .action-buttons button:hover {
+    background-color: #4F2671;
+  }
+  
   
   

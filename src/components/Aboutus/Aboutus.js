@@ -1,9 +1,9 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUserCircle, faCog, faTimes } from '@fortawesome/free-solid-svg-icons';
-import './Home.css'; // Import CSS file
+import './Aboutus.css'; // Import CSS file
 
-const Home = () => {
+const Aboutus = () => {
   return (
     <div className="page-container">
       <nav className="navbar">
@@ -45,8 +45,16 @@ const Home = () => {
         </aside>
         <div className="main-content">
           <div className="header">
-            <div className="trending-events-bar">
-              <span className="trending-events-text">Trending Events Going On</span>
+            <h2 className="team-heading">Our Team<br/></h2>
+            <div className="team-members">
+              <div className="team-member">
+                <img src="./2.jpg" alt="Team Member 1" className="team-member-photo" />
+                <p className="team-member-description">Suhaib Ahmad</p>
+              </div>
+              <div className="team-member">
+                <img src="./mansi.png" alt="Team Member 2" className="team-member-photo" />
+                <p className="team-member-description">Mansi Bhagoria</p>
+              </div>
             </div>
           </div>
         </div>
@@ -55,4 +63,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default Aboutus;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUserCircle, faCog, faTimes } from '@fortawesome/free-solid-svg-icons';
-import './Home.css'; // Import CSS file
+import './Createevents.css'; // Import CSS file
 
-const Home = () => {
+const Createevents = () => {
   return (
     <div className="page-container">
       <nav className="navbar">
@@ -45,9 +45,34 @@ const Home = () => {
         </aside>
         <div className="main-content">
           <div className="header">
-            <div className="trending-events-bar">
-              <span className="trending-events-text">Trending Events Going On</span>
-            </div>
+            <form className="event-form">
+              <h2>Create an Event</h2>
+              <div className="input-group">
+                <label>Event Name:</label>
+                <input type="text" />
+              </div>
+              <div className="input-group">
+                <label>Event Date:</label>
+                <input type="date" />
+              </div>
+              <div className="input-group">
+                <label>Event Time:</label>
+                <input type="time" />
+              </div>
+              <div className="input-group">
+                <label>Event Venue:</label>
+                <input type="text" />
+              </div>
+              <div className="input-group">
+                <label>Max People:</label>
+                <input type="number" />
+              </div>
+              <div className="input-group">
+                <label>Description:</label>
+                <textarea rows="4" maxLength="100"></textarea>
+              </div>
+              <button type="submit">Create Event</button>
+            </form>
           </div>
         </div>
       </div>
@@ -55,4 +80,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default Createevents;

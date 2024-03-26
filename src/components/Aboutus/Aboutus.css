@@ -180,5 +180,88 @@
   .accept-button:hover {
     color: #4F2671;
   }
+  .content-container {
+    display: flex;
+  }
+  
+ 
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .event-form {
+    background-color: #2FC3CD;
+    border-radius: 15px;
+    padding: 20px;
+  }
+  
+  .event-form h2 {
+    color: white;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input,
+  .input-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+  
+  .input-group textarea {
+    resize: none;
+  }
+  
+  button[type="submit"] {
+    background-color: white;
+    color: #2FC3CD;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #4F2671;
+    color: white;
+  }
+
+  .team-heading {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .team-members {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .team-member {
+    width: 45%; /* Adjust the width as needed */
+  }
+  
+  .team-member-photo {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .team-member-description {
+    color: white;
+    margin-top: 10px;
+  }
+  
   
   

@@ -1,9 +1,9 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUserCircle, faCog, faTimes } from '@fortawesome/free-solid-svg-icons';
-import './Home.css'; // Import CSS file
+import './Friends.css'; // Import CSS file
 
-const Home = () => {
+const Friends = () => {
   return (
     <div className="page-container">
       <nav className="navbar">
@@ -45,9 +45,18 @@ const Home = () => {
         </aside>
         <div className="main-content">
           <div className="header">
-            <div className="trending-events-bar">
-              <span className="trending-events-text">Trending Events Going On</span>
+            <div className="friend-request">
+              <div className="profile-photo"></div>
+              <div className="friend-details">
+                <span className="username">Friend's Username</span>
+                <div className="action-buttons">
+                  <button className="accept-button">Accept</button>
+                  <button className="decline-button">Decline</button>
+                </div>
+              </div>
             </div>
+
+                      
           </div>
         </div>
       </div>
@@ -55,4 +64,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default Friends;
