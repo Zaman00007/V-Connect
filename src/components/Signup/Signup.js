@@ -1,81 +1,78 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import "./Signup.css"; // Import your CSS file
+import React, { useState } from 'react';
+import axios from 'axios';
+import './Signup.css';
 
-function Signup({ onClose }) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+const SignUp1 = () => {
+  const [userData, setUserData] = useState({
+    name: '',
+    username: '',
+    password: ''
+  });
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append("username", data.username);
-      formData.append("password", data.password);
-      formData.append("profilePic", data.profilePic[0]);
-
-      const response = await fetch("http://localhost:8800/users", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        console.log("Signup successful");
-        onClose();
-      } else {
-        console.error("Signup failed");
-      }
+      const response = await axios.post('http://localhost:8800/users/', userData);
+      console.log('New user created:', response.data);
+      // Handle success response, like redirecting to another page or showing a success message
     } catch (error) {
-      console.error("Error during signup", error);
+      console.error('Error creating user:', error);
+      // Handle error, like showing an error message to the user
     }
   };
 
   return (
-    <div className="DialogOverlay">
-      <div className="DialogBox">
-        <h2>Sign Up</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label className="label">
-            Username:
-            <input
-              className="input"
-              {...register("username", { required: "Required" })}
-            />
-            {errors.username && errors.username.message}
-          </label>
-          <label className="label">
-            Password:
-            <input
-              className="input"
-              type="password"
-              {...register("password", { required: "Required" })}
-            />
-            {errors.password && errors.password.message}
-          </label>
-          <label className="label">
-            Profile Picture:
-            <input
-              className="input"
-              type="file"
-              accept="image/*"
-              {...register("profilePic", { required: "Required" })}
-            />
-            {errors.profilePic && errors.profilePic.message}
-          </label>
-          <div className="buttons">
-            <input type="submit" className="submit" />
-            <button className="button" onClick={onClose}>
-              Close
-            </button>
-          </div>
+    <div className="landing-container">
+      <div className="left-section">
+        <img src="./vconnectlogo.png" alt="Logo" />
+      </div>
+
+      <div className="right-section">
+        <div className="connect-text">
+          <span className="first-color" style={{ fontSize: '24px' }}>Let's </span>
+          <span className="second-color" style={{ fontSize: '24px' }}>connect</span>
+        </div>
+      </div>
+
+      <div className="buttons-section">
+        <form onSubmit={handleSubmit}>
+          <input
+            id="button1"
+            className="input-field"
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            value={userData.name}
+            onChange={handleChange}
+          /><br/>
+          <input
+            id="button2"
+            className="input-field"
+            type="text"
+            name="username"
+            placeholder="Enter your username"
+            value={userData.username}
+            onChange={handleChange}
+          /><br/>
+          <input
+            id="button3"
+            className="input-field"
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            value={userData.password}
+            onChange={handleChange}
+          /><br/>
+          <button type="submit" className="submit-button">Submit</button>
         </form>
       </div>
     </div>
   );
 }
 
-export default Signup;
+export default SignUp1;

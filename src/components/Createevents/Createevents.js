@@ -55,7 +55,7 @@ const Createevents = () => {
         <aside className="sidebar">
           <div className="sidebar-icon">
             <FontAwesomeIcon icon={faHome} className="sidebar-icon-white" />
-            <span className="sidebar-text">Home</span>
+            <span className="sidebar-text" >Home</span>
           </div>
           <div className="sidebar-icon">
             <FontAwesomeIcon icon={faClock} className="sidebar-icon-white" />
@@ -67,7 +67,7 @@ const Createevents = () => {
           </div>
           <div className="sidebar-icon">
             <FontAwesomeIcon icon={faPlus} className="sidebar-icon-white" />
-            <span className="sidebar-text">Invite</span>
+            <span className="sidebar-text" >Invite</span>
           </div>
         </aside>
         <div className="main-content">
