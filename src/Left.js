@@ -9,7 +9,7 @@ function Left({ name }) {
 
   const getUserDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:8800/users/${username}`);
+      const response = await axios.get(`http://localhost:8800/user/${username}`);
       setUserData(response.data);
 
       if (response.data.profilePic) {
