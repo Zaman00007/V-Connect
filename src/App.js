@@ -88,12 +88,10 @@ const App = () => {
           <Route path="/all" exact >
             <Allevents/>
           </Route>
-          {/* <PrivateRoute path="/admin" exact >
-            <Admin/>
-          </PrivateRoute> */}
-          {/* <PrivateRoute path="/Manage" exact >
-            <Manage/>
-          </PrivateRoute> */}
+          <Route path="/about" exact >
+            <Aboutus/>
+          </Route>
+          
           <Route path="/events" exact >
             <Createevents/>
           </Route>

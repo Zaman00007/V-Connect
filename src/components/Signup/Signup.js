@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Signup.css';
+import { useHistory } from 'react-router-dom';
 
 const SignUp1 = () => {
   const [userData, setUserData] = useState({
@@ -8,6 +9,8 @@ const SignUp1 = () => {
     username: '',
     password: ''
   });
+
+  const history = useHistory();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,8 +20,9 @@ const SignUp1 = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8800/users/', userData);
+      const response = await axios.post('http://localhost:8800/users/sign', userData);
       console.log('New user created:', response.data);
+      history.push('/');
       // Handle success response, like redirecting to another page or showing a success message
     } catch (error) {
       console.error('Error creating user:', error);

@@ -65,7 +65,7 @@ const Createevents = () => {
           <FontAwesomeIcon icon={faBell} className="navbar-icon" />
           <FontAwesomeIcon icon={faUserCircle} className="navbar-icon" />
           <FontAwesomeIcon icon={faCog} className="navbar-icon" />
-          <a href="#" className="support-link">Support</a>
+          <a href="/about" className="support-link">About US</a>
         </div>
       </nav>
       <div className="content-container">

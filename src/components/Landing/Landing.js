@@ -28,7 +28,9 @@ const Landing = () => {
       // Handle login error, e.g., display an error message to the user
     }
   };
-
+  const handleSign = () => {
+    history.push('/signup');
+ }
   return (
     <div className="landing-container">
       <div className="left-section">
@@ -66,7 +68,7 @@ const Landing = () => {
         /><br/>
         <button id="button3" onClick={handleSubmit}>Submit</button>
         <button id="button4">Forgot Password?</button>
-        <button id="button5">Sign Up</button>
+        <button id="button5" onClick={handleSign}>Sign Up</button>
       </div>
     </div>
   );

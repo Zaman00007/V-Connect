@@ -24,7 +24,7 @@ import multer from 'multer';
 const router = express.Router();
 const upload = multer();
 
-router.post('/', upload.single('profilePic'), async (req, res) => {
+router.post('/sign', upload.single('profilePic'), async (req, res) => {
     try {
         const { username, password } = req.body;
 
