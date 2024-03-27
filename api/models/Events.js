@@ -14,6 +14,18 @@ const EventSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    eventVenue: {
+        type: String,
+        
+    },
+    maxValue: {
+        type: Number,
+        
+    },
+    Description: {
+        type: String,
+        
+    },
 
     });
 
