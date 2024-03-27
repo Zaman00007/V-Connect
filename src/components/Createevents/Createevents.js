@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUserCircle, faCog, faTimes } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios'; // Import Axios for making HTTP requests
@@ -23,13 +24,29 @@ const Createevents = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8800/events/', formData);
+
       console.log('Event created:', response.data);
+      history.push('/all');
       // You can handle success response here, like showing a success message to the user
     } catch (error) {
+      alert('Error creating event')
       console.error('Error creating event:', error);
       // You can handle error here, like showing an error message to the user
     }
   };
+  const history = useHistory();
+  const handleHome = () => {
+     history.push('/home');
+  }
+  const handleEvents = () => {
+     history.push('/all');
+  }
+  const handleFriends = () => {
+     history.push('/friend');
+  } 
+  const handleInvite = () => {
+    history.push('/events');
+ } 
 
   return (
     <div className="page-container">
@@ -55,19 +72,19 @@ const Createevents = () => {
         <aside className="sidebar">
           <div className="sidebar-icon">
             <FontAwesomeIcon icon={faHome} className="sidebar-icon-white" />
-            <button id="btn-1"><span className="sidebar-text" >Home</span></button>
+            <button id="btn-1" onClick={handleHome}><span className="sidebar-text" >Home</span></button>
           </div>
           <div className="sidebar-icon">
             <FontAwesomeIcon icon={faClock} className="sidebar-icon-white" />
-            <button id='btn-2'><span className="sidebar-text">Events</span></button>
+            <button id='btn-2' onClick={handleEvents}><span className="sidebar-text">Events</span></button>
           </div>
           <div className="sidebar-icon">
             <FontAwesomeIcon icon={faUserFriends} className="sidebar-icon-white" />
-            <button id='btn-3'><span className="sidebar-text">Friends</span></button>
+            <button id='btn-3' onClick={handleFriends}><span className="sidebar-text">Friends</span></button>
           </div>
           <div className="sidebar-icon">
             <FontAwesomeIcon icon={faPlus} className="sidebar-icon-white" />
-            <button id='btn-4'><span className="sidebar-text" >Invite</span></button>
+            <button id='btn-4' onClick={handleInvite}><span className="sidebar-text" >Invite</span></button>
           </div>
         </aside>
         <div className="main-content">

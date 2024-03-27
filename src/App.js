@@ -82,6 +82,12 @@ const App = () => {
           <Route path="/signup" exact >
             <Signup/>
           </Route>
+          <Route path="/home" exact >
+            <Home/>
+          </Route>
+          <Route path="/all" exact >
+            <Allevents/>
+          </Route>
           {/* <PrivateRoute path="/admin" exact >
             <Admin/>
           </PrivateRoute> */}
