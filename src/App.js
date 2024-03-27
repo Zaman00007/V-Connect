@@ -28,7 +28,7 @@
 //       <Nav className="App-header" />
 //         <Switch>
 //           <Route path="/" exact>
-            
+
 
 //             <div className="Hero">
 //               <Left className="Left" name={{ username: 'Aviator', age: 25, gender: 'male', year: 2022 }} />
@@ -59,19 +59,19 @@
 // export default App;
 
 import React from 'react'
-// import Landing from './components/Landing/Landing';
+import Landing from './components/Landing/Landing';
 // import Allevents from './components/Allevents/Allevents'
 // import Createevents from './components/Createevents/Createevents'
 // import Friends from './components/Friends/Friends'
-// import Aboutus from './components/Aboutus/Aboutus'
+import Aboutus from './components/Aboutus/Aboutus'
 import Home from './components/Home/Home'
 
 const App = () => {
   return (
     <div>
       {/* <Landing/> */}
-      {/* <Aboutus/> */}
-      <Home/>
+      <Aboutus/>
+      {/* <Home/> */}
     </div>
   )
 }
