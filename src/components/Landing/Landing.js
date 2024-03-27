@@ -1,9 +1,15 @@
-
+import { useHistory } from 'react-router-dom';
 
 import React from 'react';
 import './Landing.css';
 
 const Landing = () => {
+
+  const history = useHistory();
+  const handleSubmit = () =>{
+    history.push('/events');
+  }
+
   return (
     <div className="landing-container">
       <div className="left-section">
@@ -33,7 +39,7 @@ const Landing = () => {
       <div className="buttons-section">
           <button id="button1">Username</button>
           <button id="button2">Password</button>
-          <button id="button3">Submit</button>
+          <button id="button3" onClick={handleSubmit}>Submit</button>
           <button id="button4">Forgot Password?</button>
           <button id="button5">Sign Up</button>
         </div>

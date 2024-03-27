@@ -60,18 +60,32 @@
 
 import React from 'react'
 import Landing from './components/Landing/Landing';
-// import Allevents from './components/Allevents/Allevents'
-// import Createevents from './components/Createevents/Createevents'
-// import Friends from './components/Friends/Friends'
+import Allevents from './components/Allevents/Allevents'
+import Createevents from './components/Createevents/Createevents'
+import Friends from './components/Friends/Friends'
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Aboutus from './components/Aboutus/Aboutus'
 import Home from './components/Home/Home'
 
 const App = () => {
   return (
     <div>
-      {/* <Landing/> */}
-      <Aboutus/>
-      {/* <Home/> */}
+      <Router>
+        <Switch>
+          <Route path="/" exact >
+            <Landing/>
+          </Route>
+          {/* <PrivateRoute path="/admin" exact >
+            <Admin/>
+          </PrivateRoute> */}
+          {/* <PrivateRoute path="/Manage" exact >
+            <Manage/>
+          </PrivateRoute> */}
+          <Route path="/events" exact >
+            <Createevents/>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   )
 }
