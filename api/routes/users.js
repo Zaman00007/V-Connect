@@ -57,6 +57,27 @@ router.post('/', upload.single('profilePic'), async (req, res) => {
     }
 });
 
+router.post('/login', async (req, res) => {
+  try {
+      const { username, password } = req.body;
+      console.log("username", username);
+      // Find the user by username
+      const user = await User.findOne({ username });
+
+      // If user not found or password doesn't match, return error
+      if (!user ) {
+          return res.status(401).json({ message: 'Invalid username or password' });
+      }
+
+      // If username and password are correct, return success message
+      res.status(200).json({ message: 'Login successful' });
+  } catch (error) {
+      console.error('Error during login', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
 router.get('/profile-pic/:username', async (req, res) => {
     try {
       const { username } = req.params;
