@@ -4,6 +4,7 @@ import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUse
 import './Home.css'; 
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
+import UserDialog from '../UserDialog/UserDialog';
 
 const Home = () => {
   const history = useHistory();
@@ -21,12 +22,16 @@ const Home = () => {
   }
   const [events, setEvents] = useState([]);
   const [trend, setTrend] = useState([]);
+  const [user, setUser] = useState(null);
+  const [showDialog, setShowDialog] = useState(false); 
   
   const handleSearch = async () =>{
     console.log("Button Clicked");
     const search = document.getElementById('search').value;
     axios.get(`http://localhost:8800/users/${search}`)
     .then(response => {
+      setUser(response.data.user);
+      setShowDialog(true);
       console.log('User:', response.data);
     })
     .catch(error => {
@@ -85,6 +90,11 @@ const Home = () => {
         console.log(error);
       }}
 
+      const handleCloseDialog = () => {
+        setShowDialog(false);
+        setUser(null); 
+      }
+
   return (
 
     
@@ -108,6 +118,7 @@ const Home = () => {
           <a href="/about" className="support-link">About US</a>
         </div>
       </nav>
+      {showDialog && user && <UserDialog user={user} onClose={handleCloseDialog}/>}
       <div className="content-container">
         <aside className="sidebar">
           <div className="sidebar-icon">
