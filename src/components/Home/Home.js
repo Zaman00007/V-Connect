@@ -22,6 +22,12 @@ const Home = () => {
   const [events, setEvents] = useState([]);
   const [trend, setTrend] = useState([]);
   
+  const handleSearch = async () =>{
+    console.log("Button Clicked");
+    const search = document.getElementById('search').value;
+    console.log('Search value:', search);
+    
+  }
   
   useEffect(() => {
   const getEvents = async () => {
@@ -85,8 +91,9 @@ const Home = () => {
           <img src="./vconnectlogo.png" alt="logo" style={{ height: '30px', width: 'auto' }}></img>
         </div>
         <div className="search-container">
-          <input type="text" placeholder="Explore" className="search-bar" />
-          <FontAwesomeIcon icon={faSearch} className="search-icon" />
+          <input type="text" placeholder="Explore" id="search" className="search-bar" />
+          <button id='btn-3' onClick={handleSearch}><span className="sidebar-text"><FontAwesomeIcon icon={faSearch} className="search-icon" /></span></button>
+          
         </div>
         <div className="navbar-icons">
           <FontAwesomeIcon icon={faBell} className="navbar-icon" />
