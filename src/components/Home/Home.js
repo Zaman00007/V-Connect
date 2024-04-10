@@ -20,6 +20,7 @@ const Home = () => {
     history.push('/events');
   }
   const [events, setEvents] = useState([]);
+  const [trend, setTrend] = useState([]);
   
   
   useEffect(() => {
@@ -27,12 +28,24 @@ const Home = () => {
     try {
       const response = await axios.get('http://localhost:8800/events/accept');
       setEvents(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);
     }}
     getEvents();
-  }, [events]);
+  },[events]);
+
+
+  useEffect(() => {
+    const getEvents = async () => {
+      try {
+        const response = await axios.get('http://localhost:8800/events/');
+        setTrend(response.data);
+        
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }}
+      getEvents();
+    }, [trend]);
 
   return (
 
@@ -81,7 +94,7 @@ const Home = () => {
               <span className="trending-events-text">Trending Events Going On</span>
             </div>
           </div>
-          {events.slice(-2).map((event, index) => (
+          {trend.slice(-2).map((event, index) => (
           <div key={index} className="header">
             <div className="square-box">
               <div className="box-content">
