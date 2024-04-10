@@ -24,10 +24,15 @@ const Allevents = () => {
     
 
 
-  const handleAccept = (e) => {
-    e.preventDefault();
-    console.log("accept button clicked");
-    alert('Event Accepted');
+  const handleAccept = async (e) => {
+    try{
+      const response = await axios.post('http://localhost:8800/events/accept', e);
+      console.log("accept button clicked ", e._id);
+      alert('Event Accepted');
+    }catch(error){
+      console.log(error);
+    }
+    
   };
 
   const history = useHistory();
@@ -93,7 +98,7 @@ const Allevents = () => {
             <button className="close-button">
               <FontAwesomeIcon icon={faTimes} />
             </button>
-            <button className="accept-button" onClick={() => handleAccept(event._id)}>Accept</button>
+            <button className="accept-button" onClick={() => handleAccept(event)}>Accept</button>
           </div>
         </div>
         </div>
