@@ -1,8 +1,9 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUserCircle, faCog, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './Home.css'; 
 import { useHistory } from 'react-router-dom';
+import axios from "axios";
 
 const Home = () => {
   const history = useHistory();
@@ -18,8 +19,23 @@ const Home = () => {
   const handleInvite = () => {
     history.push('/events');
   }
+  const [events, setEvents] = useState([]);
+  
+  useEffect(() => {
+  const getEvents = async () => {
+    try {
+      const response = await axios.get('http://localhost:8800/events/accept');
+      setEvents(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }}
+    getEvents();
+  }, [events]);
 
   return (
+
+    
     <div className="page-container">
        <nav className="navbar">
         <div className="menu-icon">
@@ -65,8 +81,26 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <div className="main-content">
+        {events.map((event, index) => (
+        <div key={index} className="header">
+      
+        
+        <div className="square-box">
+          <div className="box-content">
+            <span className="event-name">{event.eventName}</span>
+            {/* <button className="close-button" onClick={()=> handleDecline(event)}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <button className="accept-button" onClick={() => handleAccept(event)}>Accept</button> */}
+          </div>
+        </div>
+        </div>
+      ))}
+      </div>
       </div>
     </div>
+     
   );
 }
 

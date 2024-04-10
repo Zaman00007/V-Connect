@@ -54,4 +54,14 @@ router.get('/', async (req, res) => {
     }
   });
 
+  router.get('/accept', async (req, res) => {
+    try {
+      const events = await Accept.find();
+      res.status(200).json(events);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
 export default router;
