@@ -3,7 +3,7 @@ import Event from '../models/Events.js';
 import Accept from '../models/Accept.js'; 
 const router = express.Router();
 
-// Define your routes using the Event model
+
 
 router.post('/', async (req, res) => {
     console.log(res.body);
@@ -18,6 +18,17 @@ router.post('/', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+
+router.delete("/delete/:id",  async (req, res) => {
+  try {
+      const event = await Event.findByIdAndDelete(req.params.id);
+      res.status(200).json({ message: "Events Updated" });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal server error" });
+  }
+  });
 
 router.post('/accept', async (req, res) => {
   console.log(res.body);

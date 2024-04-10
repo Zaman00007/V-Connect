@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUserCircle, faCog, faTimes } from '@fortawesome/free-solid-svg-icons';
-import './Home.css'; // Import CSS file
+import './Home.css'; 
 import { useHistory } from 'react-router-dom';
 
 const Home = () => {
