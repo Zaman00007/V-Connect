@@ -47,6 +47,32 @@ const Home = () => {
       getEvents();
     }, [trend]);
 
+    const handleAccept = async (e) => {
+      try{
+        const response = await axios.post('http://localhost:8800/events/accept', e);
+        
+        console.log("accept button clicked ", e._id);
+        alert('Event Accepted');
+      }catch(error){
+        console.log(error);
+      }
+      try{
+        const response = await axios.delete(`http://localhost:8800/events/delete/${e._id}`);
+        
+      }catch(error){
+        console.log(error);
+      } 
+      
+    };
+    const handleDecline = async (e) => {
+      try{
+        const response = await axios.delete(`http://localhost:8800/events/delete/${e._id}`);
+        console.log("decline button clicked ", e._id);
+        alert('Event Declined');
+      }catch(error){
+        console.log(error);
+      }}
+
   return (
 
     
@@ -100,7 +126,15 @@ const Home = () => {
               <div className="box-content">
                 <span className="event-name">{event.eventName}</span>
               </div>
+              <div className="box-content">
+            <span className="event-name">{event.eventName}</span>
+            <button className="close-button" onClick={()=> handleDecline(event)}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <button className="accept-button" onClick={() => handleAccept(event)}>Accept</button>
+          </div>
             </div>
+
           </div>
 ))}
 
