@@ -25,7 +25,13 @@ const Home = () => {
   const handleSearch = async () =>{
     console.log("Button Clicked");
     const search = document.getElementById('search').value;
-    console.log('Search value:', search);
+    axios.get(`http://localhost:8800/users/${search}`)
+    .then(response => {
+      console.log('User:', response.data);
+    })
+    .catch(error => {
+      console.error('Error fetching user:', error);
+    });
     
   }
   
@@ -132,9 +138,8 @@ const Home = () => {
             <div className="square-box">
               <div className="box-content">
                 <span className="event-name">{event.eventName}</span>
-              </div>
-              <div className="box-content">
-            <span className="event-name">{event.eventName}</span>
+              
+           
             <button className="close-button" onClick={()=> handleDecline(event)}>
               <FontAwesomeIcon icon={faTimes} />
             </button>

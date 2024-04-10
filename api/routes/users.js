@@ -100,6 +100,22 @@ router.get('/profile-pic/:username', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+  router.get('/:username', async (req, res) => {
+    try {
+      const user = await User.findOne({ username: req.params.username });
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      res.status(200).json({ user });
+    } catch (error) {
+      console.error('Error fetching user:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
   
 
 export default router;
