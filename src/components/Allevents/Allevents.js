@@ -1,10 +1,35 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUserCircle, faCog, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './Allevents.css'; // Import CSS file
 import { useHistory } from 'react-router-dom';
+import axios from 'axios'; 
+
+
 
 const Allevents = () => {
+  const [events, setEvents] = useState([]);
+  
+  useEffect(() => {
+  const getEvents = async () => {
+    try {
+      const response = await axios.get('http://localhost:8800/events/');
+      console.log(response.data);
+      setEvents(response.data);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }}
+    getEvents();
+  }, []);
+    
+
+
+  const handleAccept = (e) => {
+    e.preventDefault();
+    console.log("accept button clicked");
+    alert('Event Accepted');
+  };
+
   const history = useHistory();
   const handleHome = () => {
      history.push('/home');
@@ -58,37 +83,25 @@ const Allevents = () => {
           </div>
         </aside>
         <div className="main-content">
-          <div className="header">
-            <div className="square-box">
-              <div className="box-content">
-                <span className="event-name">Events 1</span>
-                <button className="close-button">
-                  <FontAwesomeIcon icon={faTimes} />
-                </button>
-                <button className="accept-button">Accept</button>
-              </div>
-            </div>
-            <div className="square-box">
-              <div className="box-content">
-                <span className="event-name">Events 2</span>
-                <button className="close-button">
-                  <FontAwesomeIcon icon={faTimes} />
-                </button>
-                <button className="accept-button">Accept</button>
-              </div>
-            </div>
-            <div className="square-box">
-              <div className="box-content">
-                <span className="event-name">Events 3</span>
-                <button className="close-button">
-                  <FontAwesomeIcon icon={faTimes} />
-                </button>
-                <button className="accept-button">Accept</button>
-              </div>
-            </div>
+        {events.map((event, index) => (
+        <div key={index} className="header">
+      
+        
+        <div className="square-box">
+          <div className="box-content">
+            <span className="event-name">{event.eventName}</span>
+            <button className="close-button">
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <button className="accept-button" onClick={() => handleAccept(event._id)}>Accept</button>
           </div>
-          
         </div>
+        </div>
+      ))}
+      </div>
+      
+          
+        
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ const Createevents = () => {
 
       console.log('Event created:', response.data);
       history.push('/all');
-      // You can handle success response here, like showing a success message to the user
+      
     } catch (error) {
       alert('Error creating event')
       console.error('Error creating event:', error);
