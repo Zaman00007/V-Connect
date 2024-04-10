@@ -21,6 +21,7 @@ const Home = () => {
   }
   const [events, setEvents] = useState([]);
   
+  
   useEffect(() => {
   const getEvents = async () => {
     try {
@@ -75,13 +76,27 @@ const Home = () => {
           </div>
         </aside>
         <div className="main-content">
-          <div className="header">
+        <div className="header">
             <div className="trending-events-bar">
               <span className="trending-events-text">Trending Events Going On</span>
             </div>
           </div>
+          {events.slice(-2).map((event, index) => (
+          <div key={index} className="header">
+            <div className="square-box">
+              <div className="box-content">
+                <span className="event-name">{event.eventName}</span>
+              </div>
+            </div>
+          </div>
+))}
+
+          
         </div>
         <div className="main-content">
+        <div className="trending-events-bar">
+              <span className="trending-events-text">My Events</span>
+        </div>
         {events.map((event, index) => (
         <div key={index} className="header">
       
@@ -89,10 +104,14 @@ const Home = () => {
         <div className="square-box">
           <div className="box-content">
             <span className="event-name">{event.eventName}</span>
-            {/* <button className="close-button" onClick={()=> handleDecline(event)}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            <button className="accept-button" onClick={() => handleAccept(event)}>Accept</button> */}
+            
+          </div>
+        </div>
+        <div className="square-box">
+          <div className="box">
+            <span className="event-name">{event.eventDate}</span>
+            <span className="event-name">{event.eventTime}</span>
+            <span className="event-name">{event.eventVenue}</span>
           </div>
         </div>
         </div>
