@@ -43,7 +43,8 @@
   .header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin: 20px;
+    
   }
   
   .square-box {
@@ -53,6 +54,7 @@
     display: flex;
     justify-content:space-between;
     flex-wrap: wrap;
+    margin: 20px;
   }
 
   .menu-icon {
