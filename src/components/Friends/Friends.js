@@ -20,8 +20,8 @@ const Friends = () => {
       }
     };
     fetchFriendRequests();
-    // setFriendRequests(response);
-  }, []); // Fetch friend requests only once when the component mounts
+    
+  }, []); 
 
   const handleHome = () => {
      history.push('/home');
@@ -35,6 +35,14 @@ const Friends = () => {
   const handleInvite = () => {
     history.push('/events');
   }
+  const handleDecline = async (e) => {
+    try{
+      const response = await axios.delete(`http://localhost:8800/users/6617141ee2673858e0aede71/requests/suhaib123`);
+      
+      
+    }catch(error){
+      console.log(error);
+    }}
 
   return (
     <div className="page-container">
@@ -80,15 +88,15 @@ const Friends = () => {
               <span className="trending-events-text">Pending Connection Requests</span>
         </div>
         {friendRequests.map((request, index) => (
-          <div className="header">
+          <div key={index} className="header">
             
-              <div key={index} className="friend-request">
+              <div  className="friend-request">
                 <div className="profile-photo"></div>
                 <div className="friend-details">
                   <span className="username">{request}</span>
                   <div className="action-buttons">
                     <button className="accept-button">Accept</button>
-                    <button className="decline-button">Decline</button>
+                    <button className="decline-button" onClick={handleDecline} >Decline</button>
                   </div>
                 </div>
               </div>
