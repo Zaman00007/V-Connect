@@ -76,6 +76,9 @@ const Friends = () => {
           </div>
         </aside>
         <div className="main-content">
+        <div className="trending-events-bar">
+              <span className="trending-events-text">Pending Connection Requests</span>
+        </div>
         {friendRequests.map((request, index) => (
           <div className="header">
             
@@ -91,8 +94,11 @@ const Friends = () => {
               </div>
               </div>
             ))}
+            <div className="trending-events-bar">
+              <span className="trending-events-text">My friends</span>
+        </div>
           </div>
-        
+          
       </div>
     </div>
   );
