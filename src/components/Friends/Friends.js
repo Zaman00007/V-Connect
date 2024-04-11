@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUserCircle, faCog, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './Friends.css'; // Import CSS file
 import { useHistory } from 'react-router-dom';
+import axios from "axios";
 
 const Friends = () => {
   const history = useHistory();
+  const [friendRequests, setFriendRequests] = useState([]);
+
+  useEffect(() => {
+    const fetchFriendRequests = async () => {
+      try {
+        const response = await axios.get('http://localhost:8800/users/suhaib123');
+        console.log('Friend requests:', response.data.user.requests);
+        setFriendRequests(response.data.user.requests);
+      } catch (error) {
+        console.error('Error fetching friend requests:', error);
+      }
+    };
+    fetchFriendRequests();
+    // setFriendRequests(response);
+  }, []); // Fetch friend requests only once when the component mounts
+
   const handleHome = () => {
      history.push('/home');
   }
@@ -18,9 +35,10 @@ const Friends = () => {
   const handleInvite = () => {
     history.push('/events');
   }
+
   return (
     <div className="page-container">
-        <nav className="navbar">
+      <nav className="navbar">
         <div className="menu-icon">
           <FontAwesomeIcon icon={faBars} className="menu-icon-white" />
         </div>
@@ -58,21 +76,23 @@ const Friends = () => {
           </div>
         </aside>
         <div className="main-content">
+        {friendRequests.map((request, index) => (
           <div className="header">
-            <div className="friend-request">
-              <div className="profile-photo"></div>
-              <div className="friend-details">
-                <span className="username">Friend's Username</span>
-                <div className="action-buttons">
-                  <button className="accept-button">Accept</button>
-                  <button className="decline-button">Decline</button>
+            
+              <div key={index} className="friend-request">
+                <div className="profile-photo"></div>
+                <div className="friend-details">
+                  <span className="username">{request}</span>
+                  <div className="action-buttons">
+                    <button className="accept-button">Accept</button>
+                    <button className="decline-button">Decline</button>
+                  </div>
                 </div>
               </div>
-            </div>
-
-                      
+              </div>
+            ))}
           </div>
-        </div>
+        
       </div>
     </div>
   );
