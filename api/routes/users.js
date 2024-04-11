@@ -1,24 +1,5 @@
-// import express from 'express';
-// import Event from '../models/Users.js'; 
-// const router = express.Router();
-
-// router.post('/', async (req, res) => {
-//     console.log(res.body);
-//     try {
-//         console.log('POST /users called');
-//         const userData = req.body;
-//         const newUser = new User(userData);
-//         await newUser.save();
-//         res.status(201).json(newUser);
-//     } catch (error) {
-//         console.error('Error saving user:', error);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// })
-
-// export default users
 import express from 'express';
-import User from '../models/Users.js'; // Import the User model
+import User from '../models/Users.js'; 
 import multer from 'multer';
 
 const router = express.Router();
