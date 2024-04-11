@@ -8,6 +8,7 @@ import axios from "axios";
 const Friends = () => {
   const history = useHistory();
   const [friendRequests, setFriendRequests] = useState([]);
+  const [friends, setFriends] = useState([]);
 
   useEffect(() => {
     const fetchFriendRequests = async () => {
@@ -15,10 +16,21 @@ const Friends = () => {
         const response = await axios.get('http://localhost:8800/users/suhaib123');
         console.log('Friend requests:', response.data.user.requests);
         setFriendRequests(response.data.user.requests);
+        setFriends(response.data.user.friends);
       } catch (error) {
         console.error('Error fetching friend requests:', error);
       }
     };
+    // const fetchFriends = async () => {
+    //   try {
+    //     const response = await axios.get('http://localhost:8800/users/suhaib123');
+    //     console.log('Friend requests:', response.data.user.friends);
+    //     setFriendRequests(response.data.user.requests);
+    //   } catch (error) {
+    //     console.error('Error fetching friend requests:', error);
+    //   }
+    // };
+    // fetchFriends();
     fetchFriendRequests();
     
   }, []); 
@@ -43,6 +55,23 @@ const Friends = () => {
     }catch(error){
       console.log(error);
     }}
+
+    const handleAccept = async (e) => {
+      try{
+        const response = await axios.delete(`http://localhost:8800/users/6617141ee2673858e0aede71/requests/suhaib123`);
+        
+        
+      }catch(error){
+        console.log(error);
+      }
+      try{
+        const response = await axios.put(`http://localhost:8800/users/6617141ee2673858e0aede71/requests/suhaib123`);
+        
+        
+      }catch(error){
+        console.log(error);
+      }
+    }
 
   return (
     <div className="page-container">
@@ -95,7 +124,7 @@ const Friends = () => {
                 <div className="friend-details">
                   <span className="username">{request}</span>
                   <div className="action-buttons">
-                    <button className="accept-button">Accept</button>
+                    <button className="accept-button" onClick={handleAccept} >Accept</button>
                     <button className="decline-button" onClick={handleDecline} >Decline</button>
                   </div>
                 </div>
@@ -105,6 +134,21 @@ const Friends = () => {
             <div className="trending-events-bar">
               <span className="trending-events-text">My friends</span>
         </div>
+        {friends.map((request, index) => (
+          <div key={index} className="header">
+            
+              <div  className="friend-request">
+                <div className="profile-photo"></div>
+                <div className="friend-details">
+                  <span className="username">{request}</span>
+                  <div className="action-buttons">
+                    {/* <button className="accept-button" onClick={handleAccept} >Accept</button> */}
+                    <button className="decline-button" onClick={handleDecline} >Remove Friend</button>
+                  </div>
+                </div>
+              </div>
+              </div>
+            ))}
           </div>
           
       </div>

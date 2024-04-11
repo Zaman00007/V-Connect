@@ -18,6 +18,9 @@ const UserSchema = new mongoose.Schema({
     requests: {
         type: [String],
     },
+    friends: {
+        type: [String],
+    },
 });
 
 UserSchema.methods.updateRequests = async function(newRequest) {

@@ -150,8 +150,30 @@ try{
 
   // Use $pull operator to remove the specific request from the array
   user.requests.pull(requestId);
-
+  user.friends.pull(requestId);
   // Save the updated user document
+  await user.save();
+
+  return res.status(200).json({ message: 'Request deleted successfully', user });
+} catch (error) {
+  
+  return res.status(500).json({ message: 'Internal Server Error' });
+}
+  
+});
+router.put('/:userId/requests/:requestId', async (req, res) => {
+  const { userId, requestId } = req.params;
+  const user = await User.findById(userId);
+try{
+  if (!user) {
+    // Handle case where user is not found
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  
+  user.friends.push(requestId);
+
+  
   await user.save();
 
   return res.status(200).json({ message: 'Request deleted successfully', user });
