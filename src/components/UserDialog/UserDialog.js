@@ -1,11 +1,22 @@
 import React from 'react';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const UserDialog = ({ user, onClose }) => {
   const handleSendFriendRequest = () => {
-    // Add logic to send friend request here
+    const userId = user._id; 
+    const newRequest = user.username;
     console.log('Friend request sent to:', user.username);
+    axios.put(`http://localhost:8800/users/${userId}`, { newRequest })
+  .then(response => {
+    console.log('Requests field updated successfully:', response.data);
+    
+  })
+  .catch(error => {
+    console.error('Error updating requests field:', error);
+    
+  });
   };
 
   return (

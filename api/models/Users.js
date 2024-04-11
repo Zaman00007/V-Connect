@@ -5,21 +5,31 @@ const { Schema } = mongoose;
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
-        // required: true,
-        // unique: true,
     },
     username: {
         type: String,
-        // required: true,
-        // unique: true,
     },
     password: {
         type: String,
-        // required: true,
     },
     profilePic: {
         type: String,
     },
+    requests: {
+        type: [String],
+    },
 });
 
-export default mongoose.model("User", UserSchema);
+UserSchema.methods.updateRequests = async function(newRequest) {
+    try {
+        this.requests.push(newRequest);
+        await this.save();
+        return this;
+    } catch (error) {
+        throw error;
+    }
+}
+
+const User = mongoose.model("User", UserSchema);
+
+export default User;

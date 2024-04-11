@@ -115,7 +115,29 @@ router.get('/profile-pic/:username', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
-  
+
+
+  router.put('/:id', async (req, res) => {
+    const { id } = req.params; // Extract user ID from request parameters
+    const { newRequest } = req.body; // Extract the new request value from request body
+
+    try {
+        // Find the user by ID
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Update the requests field
+        await user.updateRequests(newRequest);
+
+        // Send a success response
+        return res.status(200).json({ message: 'Requests field updated successfully', user });
+    } catch (error) {
+        console.error('Error updating requests field:', error);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
   
 
 export default router;
