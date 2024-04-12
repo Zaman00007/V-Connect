@@ -46,7 +46,7 @@ const Friends = () => {
       console.log(error);
     }}
 
-    const handleAccept = async (e) => {
+    const handleAccept = async (request) => {
       try{
         const token = Cookies.get('token');
       const decodedToken = jwtDecode(token);
@@ -58,6 +58,9 @@ const Friends = () => {
         console.log(error);
       }
       try{
+        const token = Cookies.get('token');
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
         const response = await axios.put(`http://localhost:8800/users/${userId}/requests/${request}`);
         
         
@@ -101,7 +104,7 @@ const Friends = () => {
                   <span className="username">{request}</span>
                   <div className="action-buttons">
                     {/* <button className="accept-button" onClick={handleAccept} >Accept</button> */}
-                    <button className="decline-button" onClick={handleDecline} >Remove Friend</button>
+                    <button className="decline-button" onClick={() => handleDecline(request)} >Remove Friend</button>
                   </div>
                 </div>
               </div>
