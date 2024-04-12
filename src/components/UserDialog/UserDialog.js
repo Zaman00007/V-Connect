@@ -3,13 +3,18 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import './UserDialog.css';
+import Cookies from 'js-cookie';
+import { jwtDecode } from "jwt-decode";
 
 const UserDialog = ({ user, onClose }) => {
   const handleSendFriendRequest = () => {
+    const token = Cookies.get('token');
+      const decodedToken = jwtDecode(token);
+      const reqId = decodedToken.id;
     const userId = user._id; 
-    const newRequest = user.username;
+    
     console.log('Friend request sent to:', user.username);
-    axios.put(`http://localhost:8800/users/${userId}`, { newRequest })
+    axios.put(`http://localhost:8800/users/${userId}`, { reqId })
   .then(response => {
     console.log('Requests field updated successfully:', response.data);
     

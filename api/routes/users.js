@@ -127,17 +127,18 @@ router.get('/profile-pic/:username', async (req, res) => {
 
   router.put('/:id', async (req, res) => {
     const { id } = req.params; 
-    const { newRequest } = req.body; 
+    const { reqId } = req.body; 
 
     try {
         
         const user = await User.findById(id);
+        const newRequest = await User.findById(reqId);
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
 
     
-        await user.updateRequests(newRequest);
+        await user.updateRequests(newRequest.username);
 
     
         return res.status(200).json({ message: 'Requests field updated successfully', user });
