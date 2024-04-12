@@ -41,7 +41,7 @@ const Friends = () => {
       const userId = decodedToken.id;
       const response = await axios.delete(`http://localhost:8800/users/${userId}/requests/${request}`);
       
-      
+      window.location.reload();
     }catch(error){
       console.log(error);
     }}
@@ -52,7 +52,7 @@ const Friends = () => {
       const decodedToken = jwtDecode(token);
       const userId = decodedToken.id;
         const response = await axios.delete(`http://localhost:8800/users/${userId}/requests/${request}`);
-        
+        window.location.reload();
         
       }catch(error){
         console.log(error);

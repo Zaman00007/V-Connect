@@ -17,8 +17,10 @@ const UserDialog = ({ user, onClose }) => {
     axios.put(`http://localhost:8800/users/${userId}`, { reqId })
   .then(response => {
     console.log('Requests field updated successfully:', response.data);
+    alert('Friend request sent');
     
   })
+  
   .catch(error => {
     console.error('Error updating requests field:', error);
     

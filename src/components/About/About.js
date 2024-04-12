@@ -11,21 +11,12 @@ function About() {
         <div className='logo_cont'>
           <img src="/2.jpg" alt="pic 1" className="logo" />
           <div className='logo_text'>
-            <h1>SUHAIB AHMAD</h1>
+            <h1>MD SHAHID ZAMAN</h1>
             <p>Web-Developer</p>
           </div>
         </div>
       </div>
-      <div className='About'>  
-        
-        <div className='logo_cont'>
-        <img src="./1.jpg" alt="pic 1" className="logo" />
-        <div className='logo_text'>
-            <h1>MANSI BHAGORIA</h1>
-            <p>Web-Developer</p>
-          </div>
-        </div>
-      </div>
+     
     </div>
   )
 }
