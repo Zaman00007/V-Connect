@@ -4,7 +4,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsFillBellFill } from "react-icons/bs";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faCog, faBell } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 import UserDialog from "../UserDialog/UserDialog";
 import Aside from "../Aside/Aside"; 
@@ -15,18 +15,16 @@ function Nav() {
   const [showDialog, setShowDialog] = useState(false);
   const [user, setUser] = useState(null);
   const [showAside, setShowAside] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false); // State for dropdown visibility
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [showBellDropdown, setShowBellDropdown] = useState(false);
   const history = useHistory(); 
 
   const handleSearch = async () => {
-    console.log("Button Clicked");
     const search = document.getElementById('search').value;
-    console.log('Search:', search);
     axios.get(`http://localhost:8800/users/search/${search}`)
       .then(response => {
         setUser(response.data.user);
         setShowDialog(true);
-        console.log('User:', response.data);
       })
       .catch(error => {
         console.error('Error fetching user:', error);
@@ -50,12 +48,20 @@ function Nav() {
     history.push('/home');
   }
 
-  const handleDropdown = () => {
-    setShowDropdown(!showDropdown); 
+  const handleUserDropdown = () => {
+    setShowUserDropdown(!showUserDropdown); 
   }
+
+  const handleBellDropdown = () => {
+    setShowBellDropdown(!showBellDropdown); 
+  }
+
   const handleLogout = () => {
     Cookies.remove('token');
     history.push('/');
+  }
+  const handleNotification = () => {
+    history.push('/all');
   }
 
   return (
@@ -78,18 +84,23 @@ function Nav() {
           <AiOutlineSearch className="search__icon" />
         </button>
       </div>
-      <BsFillBellFill className="bell" onClick={handleBell} />
+      {/* <BsFillBellFill className="bell" onClick={handleBell} /> */}
       <div className="dropdown">
-        <FontAwesomeIcon icon={faUserCircle} className="bell" onClick={handleDropdown} />
-        {showDropdown && (
+        <FontAwesomeIcon icon={faUserCircle} className="bell" onClick={handleUserDropdown} />
+        {showUserDropdown && (
           <div className="dropdown-content">
-            {/* <button className="dropdown-item">Profile</button> */}
-            {/* <button className="dropdown-item">Settings</button> */}
             <button className="dropdown-item" onClick={handleLogout}>Logout</button>
           </div>
         )}
       </div>
-      <FontAwesomeIcon icon={faCog} className="bell" />
+      <div className="dropdown">
+        <FontAwesomeIcon icon={faBell} className="bell" onClick={handleBellDropdown} />
+        {showBellDropdown && (
+          <div className="dropdown-content">
+            <button className="dropdown-item" onClick={handleNotification}>New invites</button>
+          </div>
+        )}
+      </div>
       {showDialog && user && <UserDialog user={user} onClose={handleCloseDialog} />}
       {showAside && <Aside />}
     </nav>
