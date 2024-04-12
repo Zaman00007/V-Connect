@@ -168,7 +168,7 @@
     margin-right: 10px;
   }
   
-  .close-button,
+  .close,
   .accept-button {
     border: none;
     background: none;
@@ -176,7 +176,7 @@
     color: white;
   }
   
-  .close-button:hover,
+  .close:hover,
   .accept-button:hover {
     color: #4F2671;
   }

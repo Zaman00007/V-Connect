@@ -50,7 +50,7 @@ function Nav() {
 
       <div className="logo__cont">
         <img
-          src=""
+          src="vconnectlogo.png"
           alt=""
           className="logo"
         />

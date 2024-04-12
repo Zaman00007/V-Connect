@@ -1,4 +1,4 @@
-/* Allevents.css */
+
 .page-container {
   background-color: #220A2E;
   height: 100vh;
@@ -6,20 +6,7 @@
   flex-direction: column;
 }
 
-/* .navbar {
-  background-color: 2E0D3E;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.navbar-logo{
-  height:10px;
-  width:20px;
-
-
-} */
 
 .navbar {
   background-color: #2E0D3E;
@@ -29,7 +16,7 @@
 }
 
 .navbar-logo {
-  margin-left: 20px; /* Adjust this margin according to your preference */
+  margin-left: 20px; 
 }
 
 
@@ -40,11 +27,11 @@
   color: #FFFFFF;
 }
 
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-}
+} */
 
 .square-box {
   background-color: #FFFFFF;
@@ -57,7 +44,7 @@
 
 .menu-icon {
   cursor: pointer;
-  margin-right: 10px; /* Adjust as needed */
+  margin-right: 10px; 
 }
 
 .menu-icon-white,
@@ -200,21 +187,24 @@
 .accept-button:hover {
   color: #4F2671;
 }
-.content-container {
+/* .content-container {
   display: flex;
-}
+} */
 
 
 
-.main-content {
+/* .main-content {
   flex: 1;
   padding: 20px;
-}
+} */
 
 .event-form {
   background-color: #2FC3CD;
   border-radius: 15px;
   padding: 20px;
+  align-items: center;
+  width: 25%;
+  margin-left: 40%;
 }
 
 .event-form h2 {

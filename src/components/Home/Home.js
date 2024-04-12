@@ -7,7 +7,7 @@ import axios from "axios";
 import Nav from "../Nav/Nav";
 
 const Home = () => {
-  const history = useHistory();
+  
   
   const [events, setEvents] = useState([]);
   const [trend, setTrend] = useState([]);
@@ -89,7 +89,7 @@ const Home = () => {
                 <span className="event-name">{event.eventName}</span>
               
            
-            <button className="close-button" onClick={()=> handleDecline(event)}>
+            <button className="close" onClick={()=> handleDecline(event)}>
               <FontAwesomeIcon icon={faTimes} />
             </button>
             <button className="accept-button" onClick={() => handleAccept(event)}>Accept</button>

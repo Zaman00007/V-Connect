@@ -63,7 +63,7 @@ const Allevents = () => {
         <div className="square-box">
           <div className="box-content">
             <span className="event-name">{event.eventName}</span>
-            <button className="close-button" onClick={()=> handleDecline(event)}>
+            <button className="close" onClick={()=> handleDecline(event)}>
               <FontAwesomeIcon icon={faTimes} />
             </button>
             <button className="accept-button" onClick={() => handleAccept(event)}>Accept</button>
