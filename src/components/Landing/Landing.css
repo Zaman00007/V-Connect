@@ -76,3 +76,26 @@ body {
   margin: 10px 0px;
   border-radius: 7px;
 }
+.input-field {
+  /* Styles for input fields */
+  border: 1px solid #007bff; /* aceblue color */
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 300px; /* Adjust width as needed */
+}
+
+.submit-button {
+  /* Styles for the submit button */
+  background-color: #007bff; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.submit-button:hover {
+  background-color: #0056b3; 
+}

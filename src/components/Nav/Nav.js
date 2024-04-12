@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Nav.css";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -10,6 +10,7 @@ import UserDialog from "../UserDialog/UserDialog";
 import Aside from "../Aside/Aside"; 
 import { useHistory } from "react-router-dom";
 import Cookies from 'js-cookie';
+import { jwtDecode } from "jwt-decode";
 
 function Nav() {
   const [showDialog, setShowDialog] = useState(false);
@@ -18,6 +19,27 @@ function Nav() {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showBellDropdown, setShowBellDropdown] = useState(false);
   const history = useHistory(); 
+  const [loggedIn, setLoggedIn] = useState(null);
+
+  
+  useEffect(() => {
+    const Logged = async () => {
+      try {
+      const token = Cookies.get('token');
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
+      console.log("User ID:", userId);
+      setLoggedIn(userId);
+        
+      } catch (error) {
+        console.error('Error fetching friend requests:', error);
+      }
+    };
+    
+    Logged();
+    
+  }, []); 
+
 
   const handleSearch = async () => {
     const search = document.getElementById('search').value;
@@ -89,6 +111,7 @@ function Nav() {
         <FontAwesomeIcon icon={faUserCircle} className="bell" onClick={handleUserDropdown} />
         {showUserDropdown && (
           <div className="dropdown-content">
+            <span>User id:{loggedIn}</span>
             <button className="dropdown-item" onClick={handleLogout}>Logout</button>
           </div>
         )}
