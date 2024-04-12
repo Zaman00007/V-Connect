@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import './UserDialog.css';
 
 const UserDialog = ({ user, onClose }) => {
   const handleSendFriendRequest = () => {

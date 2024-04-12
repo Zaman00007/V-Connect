@@ -1,51 +1,71 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Nav.css";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsFillBellFill } from "react-icons/bs";
-import { Link } from "react-router-dom";  
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle, faCog } from '@fortawesome/free-solid-svg-icons';
+import axios from "axios";
+import UserDialog from "../UserDialog/UserDialog";
+import Aside from "../Aside/Aside"; 
 
 function Nav() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+  const [user, setUser] = useState(null);
+  const [showAside, setShowAside] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const handleSearch = async () => {
+    console.log("Button Clicked");
+    const search = document.getElementById('search').value;
+    console.log('Search:', search);
+    axios.get(`http://localhost:8800/users/${search}`)
+      .then(response => {
+        setUser(response.data.user);
+        setShowDialog(true);
+        console.log('User:', response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching user:', error);
+      });
+  }
+
+  const handleCloseDialog = () => {
+    setShowDialog(false);
+    setUser(null);
+  }
+
+  const handleBell = () => {
+    console.log('Bell clicked');
+  }
+
+  const handleToggleAside = () => {
+    setShowAside(!showAside);
+  }
 
   return (
     <nav className="Nav">
-
-      <div className="logo1">
-        <img src="" alt="logo"></img>
-      </div>
-      <div className="menu__cont">
-        <AiOutlineMenu className="menu" onClick={toggleDropdown} />
-        {isDropdownOpen && (
-          <div className="dropdown__content">
-            
-            <a href="#">Profile</a>
-            <a href="#">About Us</a>
-            <a href="#">Log Out</a>
-          </div>
-        )}
+      <div className="menu__cont" onClick={handleToggleAside}>
+        <AiOutlineMenu className="menu" />
       </div>
 
-      {/* <div className="logo__cont">
-        <Link to="/">
+      <div className="logo__cont">
         <img
-          src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg"
-          alt="YouTube Logo"
+          src=""
+          alt=""
           className="logo"
         />
-        </Link>
-      </div> */}
-      {/* <div className="search__cont">
-        <input type="text" placeholder="Search" className="search" />
-        <button type="submit" className="search__btn">
+      </div>
+      <div className="search__cont">
+        <input type="text" placeholder="Search" id="search" className="search" />
+        <button type="submit" className="search__btn" onClick={handleSearch}>
           <AiOutlineSearch className="search__icon" />
         </button>
       </div>
-      <BsFillBellFill className="bell" /> */}
+      <BsFillBellFill className="bell" onClick={handleBell} />
+      <FontAwesomeIcon icon={faUserCircle} className="bell" />
+      <FontAwesomeIcon icon={faCog} className="bell" />
+      {showDialog && user && <UserDialog user={user} onClose={handleCloseDialog} />}
+      {showAside && <Aside />}
     </nav>
   );
 }
