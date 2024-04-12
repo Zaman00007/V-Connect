@@ -4,42 +4,16 @@ import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUse
 import './Home.css'; 
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
-import UserDialog from '../UserDialog/UserDialog';
 import Nav from "../Nav/Nav";
 
 const Home = () => {
   const history = useHistory();
-  const handleHome = () => {
-     history.push('/home');
-  }
-  const handleEvents = () => {
-     history.push('/all');
-  }
-  const handleFriends = () => {
-     history.push('/friend');
-  } 
-  const handleInvite = () => {
-    history.push('/events');
-  }
+  
   const [events, setEvents] = useState([]);
   const [trend, setTrend] = useState([]);
-  const [user, setUser] = useState(null);
-  const [showDialog, setShowDialog] = useState(false); 
   
-  const handleSearch = async () =>{
-    console.log("Button Clicked");
-    const search = document.getElementById('search').value;
-    axios.get(`http://localhost:8800/users/${search}`)
-    .then(response => {
-      setUser(response.data.user);
-      setShowDialog(true);
-      console.log('User:', response.data);
-    })
-    .catch(error => {
-      console.error('Error fetching user:', error);
-    });
-    
-  }
+  
+  
   
   useEffect(() => {
   const getEvents = async () => {
