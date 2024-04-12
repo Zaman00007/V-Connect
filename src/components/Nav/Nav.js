@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./Nav.css";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -9,11 +9,13 @@ import axios from "axios";
 import UserDialog from "../UserDialog/UserDialog";
 import Aside from "../Aside/Aside"; 
 import { useHistory } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 function Nav() {
   const [showDialog, setShowDialog] = useState(false);
   const [user, setUser] = useState(null);
   const [showAside, setShowAside] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false); // State for dropdown visibility
   const history = useHistory(); 
 
   const handleSearch = async () => {
@@ -43,8 +45,17 @@ function Nav() {
   const handleToggleAside = () => {
     setShowAside(!showAside);
   }
+  
   const handleLogoClick = () => {
     history.push('/home');
+  }
+
+  const handleDropdown = () => {
+    setShowDropdown(!showDropdown); 
+  }
+  const handleLogout = () => {
+    Cookies.remove('token');
+    history.push('/');
   }
 
   return (
@@ -68,7 +79,16 @@ function Nav() {
         </button>
       </div>
       <BsFillBellFill className="bell" onClick={handleBell} />
-      <FontAwesomeIcon icon={faUserCircle} className="bell" />
+      <div className="dropdown">
+        <FontAwesomeIcon icon={faUserCircle} className="bell" onClick={handleDropdown} />
+        {showDropdown && (
+          <div className="dropdown-content">
+            {/* <button className="dropdown-item">Profile</button> */}
+            {/* <button className="dropdown-item">Settings</button> */}
+            <button className="dropdown-item" onClick={handleLogout}>Logout</button>
+          </div>
+        )}
+      </div>
       <FontAwesomeIcon icon={faCog} className="bell" />
       {showDialog && user && <UserDialog user={user} onClose={handleCloseDialog} />}
       {showAside && <Aside />}

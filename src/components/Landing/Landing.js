@@ -72,7 +72,7 @@ const Landing = () => {
           onChange={handleChange}
         /><br/>
         <button id="button3" onClick={handleSubmit}>Submit</button>
-        <button id="button4">Forgot Password?</button>
+        {/* <button id="button4">Forgot Password?</button> */}
         <button id="button5" onClick={handleSign}>Sign Up</button>
       </div>
     </div>
