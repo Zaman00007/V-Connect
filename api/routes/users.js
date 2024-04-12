@@ -55,8 +55,7 @@ router.post('/login', async (req, res) => {
       // if (!isValidPassword) {
       //     return res.status(400).json({ message: 'Invalid password' });
       // }
-      const token = jwt.sign({ id: existingUser._id, isAdmin: existingUser.isAdmin }, process.env.JWT);
-       
+      const token = jwt.sign({ id: existingUser._id, isAdmin: existingUser.isAdmin }, process.env.JWT); 
 
       // const {password, ...rest }=  existingUser._doc;
       // console.log(token);
@@ -92,9 +91,11 @@ router.get('/profile-pic/:username', async (req, res) => {
     }
   });
 
-  router.get('/:username', async (req, res) => {
+  router.get('/:id', async (req, res) => {
     try {
-      const user = await User.findOne({ username: req.params.username });
+      const { id } = req.params; 
+      // const user = await User.findOne({ id: req.params.id });
+      const user = await User.findById(id);
   
       if (!user) {
         return res.status(404).json({ message: 'User not found' });

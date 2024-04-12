@@ -5,6 +5,8 @@ import './Friends.css';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import Nav from '../Nav/Nav';
+import Cookies from 'js-cookie';
+import { jwtDecode } from "jwt-decode";
 
 const Friends = () => {
   const history = useHistory();
@@ -14,7 +16,11 @@ const Friends = () => {
   useEffect(() => {
     const fetchFriendRequests = async () => {
       try {
-        const response = await axios.get('http://localhost:8800/users/suhaib123');
+      const token = Cookies.get('token');
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
+      console.log("User ID:", userId);
+      const response = await axios.get(`http://localhost:8800/users/${userId}`);
         console.log('Friend requests:', response.data.user.requests);
         setFriendRequests(response.data.user.requests);
         setFriends(response.data.user.friends);
