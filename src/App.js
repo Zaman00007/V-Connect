@@ -7,6 +7,9 @@ import Signup from './components/Signup/Signup'
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Aboutus from './components/Aboutus/Aboutus'
 import Home from './components/Home/Home'
+import PrivateRoute from "./PrivateRoute";
+import Unauthorized from './Unauthorized'
+
 
 const App = () => {
   return (
@@ -22,14 +25,17 @@ const App = () => {
           <Route path="/signup" exact >
             <Signup/>
           </Route>
-          <Route path="/home" exact >
+          <PrivateRoute path="/home" exact >
             <Home/>
-          </Route>
+          </PrivateRoute>
           <Route path="/all" exact >
             <Allevents/>
           </Route>
           <Route path="/about" exact >
             <Aboutus/>
+          </Route>
+          <Route path="/Unauthorized" exact >
+            <Unauthorized/>
           </Route>
           
           <Route path="/events" exact >
