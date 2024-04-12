@@ -8,11 +8,13 @@ import { faUserCircle, faCog } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 import UserDialog from "../UserDialog/UserDialog";
 import Aside from "../Aside/Aside"; 
+import { useHistory } from "react-router-dom";
 
 function Nav() {
   const [showDialog, setShowDialog] = useState(false);
   const [user, setUser] = useState(null);
   const [showAside, setShowAside] = useState(false);
+  const history = useHistory(); 
 
   const handleSearch = async () => {
     console.log("Button Clicked");
@@ -41,6 +43,9 @@ function Nav() {
   const handleToggleAside = () => {
     setShowAside(!showAside);
   }
+  const handleLogoClick = () => {
+    history.push('/home');
+  }
 
   return (
     <nav className="Nav">
@@ -53,6 +58,7 @@ function Nav() {
           src="vconnectlogo.png"
           alt=""
           className="logo"
+          onClick={handleLogoClick}
         />
       </div>
       <div className="search__cont">

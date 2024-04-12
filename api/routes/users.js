@@ -1,6 +1,7 @@
 import express from 'express';
 import User from '../models/Users.js'; 
 import multer from 'multer';
+import jwt from "jsonwebtoken";
 
 const router = express.Router();
 const upload = multer();
@@ -15,20 +16,20 @@ router.post('/sign', upload.single('profilePic'), async (req, res) => {
             return res.status(400).json({ message: 'Username already exists' });
         }
 
-        // Create a new user
+        
         const newUser = new User({
             username,
             password,
         });
 
-        // Save the profile picture if it exists
+        
         if (req.file) {
             const profilePicBuffer = req.file.buffer;
             const profilePicBase64 = profilePicBuffer.toString('base64');
             newUser.profilePic = profilePicBase64;
         }
 
-        // Save the user to the database
+        
         await newUser.save();
 
         res.status(201).json({ message: 'Signup successful' });
@@ -41,19 +42,27 @@ router.post('/sign', upload.single('profilePic'), async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
       const { username, password } = req.body;
-      console.log("username", username);
-      // Find the user by username
-      const user = await User.findOne({ username });
-
-      // If user not found or password doesn't match, return error
-      if (!user ) {
-          return res.status(401).json({ message: 'Invalid username or password' });
+      
+      const existingUser = await User.findOne( {username} );
+      if (!existingUser) {
+          return res.status(400).json({ message: 'User does not exist' });
+      }
+      if(existingUser.password !== req.body.password){
+        return res.status(400).json({ message: 'Invalid password' });
       }
 
-      // If username and password are correct, return success message
-      res.status(200).json({ message: 'Login successful' });
+      // const isValidPassword = bcrypt.compareSync(req.body.password, existingUser.password);
+      // if (!isValidPassword) {
+      //     return res.status(400).json({ message: 'Invalid password' });
+      // }
+      const token = jwt.sign({ id: existingUser._id, isAdmin: existingUser.isAdmin }, process.env.JWT); 
+
+      // const {password, ...rest }=  existingUser._doc;
+      // console.log(token);
+    return res.status(200).json({token: token})
+
   } catch (error) {
-      console.error('Error during login', error);
+      console.error('Error during signup', error);
       res.status(500).json({ error: 'Internal Server Error' });
   }
 });

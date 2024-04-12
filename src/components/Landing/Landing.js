@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './Landing.css';
+import Cookies from 'js-cookie';
 
 const Landing = () => {
   const [formData, setFormData] = useState({
@@ -20,12 +21,14 @@ const Landing = () => {
     try {
       const response = await axios.post('http://localhost:8800/users/login', formData);
       console.log('Logged in successfully:', response.data);
-      // Handle successful login, e.g., redirect to another page
+      
+      Cookies.set('token', response.data.token, { expires: 7 });
+
       history.push('/events');
     } catch (error) {
       alert('Invalid username or password')
       console.error('Error logging in:', error);
-      // Handle login error, e.g., display an error message to the user
+      
     }
   };
   const handleSign = () => {
