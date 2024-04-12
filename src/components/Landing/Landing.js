@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './Landing.css';
 import Cookies from 'js-cookie';
+import { jwtDecode } from "jwt-decode";
 
 const Landing = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +24,10 @@ const Landing = () => {
       console.log('Logged in successfully:', response.data);
       
       Cookies.set('token', response.data.token, { expires: 7 });
+      const token = Cookies.get('token');
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
+      console.log("User ID:", userId);
 
       history.push('/events');
     } catch (error) {
