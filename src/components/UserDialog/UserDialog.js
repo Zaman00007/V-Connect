@@ -18,6 +18,7 @@ const UserDialog = ({ user, onClose }) => {
   .then(response => {
     console.log('Requests field updated successfully:', response.data);
     alert('Friend request sent');
+    window.location.reload();
     
   })
   
@@ -25,6 +26,7 @@ const UserDialog = ({ user, onClose }) => {
     console.error('Error updating requests field:', error);
     
   });
+ 
   };
 
   return (
