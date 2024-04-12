@@ -19,7 +19,7 @@ function Nav() {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showBellDropdown, setShowBellDropdown] = useState(false);
   const history = useHistory(); 
-  const [loggedIn, setLoggedIn] = useState(null);
+  const [loggedIn, setLoggedIn] = useState([]);
 
   
   useEffect(() => {
@@ -29,7 +29,9 @@ function Nav() {
       const decodedToken = jwtDecode(token);
       const userId = decodedToken.id;
       console.log("User ID:", userId);
-      setLoggedIn(userId);
+      const response = await axios.get(`http://localhost:8800/users/${userId}`);
+      console.log("User:", response.data.user);
+      setLoggedIn(response.data.user);
         
       } catch (error) {
         console.error('Error fetching friend requests:', error);
@@ -111,7 +113,7 @@ function Nav() {
         <FontAwesomeIcon icon={faUserCircle} className="bell" onClick={handleUserDropdown} />
         {showUserDropdown && (
           <div className="dropdown-content">
-            <span>User id:{loggedIn}</span>
+            <button>{loggedIn.username}</button>
             <button className="dropdown-item" onClick={handleLogout}>Logout</button>
           </div>
         )}
