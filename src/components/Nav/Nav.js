@@ -20,7 +20,7 @@ function Nav() {
     console.log("Button Clicked");
     const search = document.getElementById('search').value;
     console.log('Search:', search);
-    axios.get(`http://localhost:8800/users/${search}`)
+    axios.get(`http://localhost:8800/users/search/${search}`)
       .then(response => {
         setUser(response.data.user);
         setShowDialog(true);

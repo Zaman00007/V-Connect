@@ -77,7 +77,7 @@ router.get('/profile-pic/:username', async (req, res) => {
         return res.status(404).json({ message: 'Profile picture not found' });
       }
   
-      // Assuming profilePic is stored as a base64 string
+      
       const base64Image = user.profilePic;
       const imageBuffer = Buffer.from(base64Image, 'base64');
       res.writeHead(200, {
@@ -96,6 +96,22 @@ router.get('/profile-pic/:username', async (req, res) => {
       const { id } = req.params; 
       // const user = await User.findOne({ id: req.params.id });
       const user = await User.findById(id);
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      res.status(200).json({ user });
+    } catch (error) {
+      console.error('Error fetching user:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  router.get('/search/:username', async (req, res) => {
+    try {
+      // const { id } = req.params; 
+      const user = await User.findOne({ username: req.params.username });
+      // const user = await User.findById(id);
   
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
