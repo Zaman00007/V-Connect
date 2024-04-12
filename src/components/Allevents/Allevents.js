@@ -57,20 +57,26 @@ const Allevents = () => {
       <div className="content-container">
         <div className="main-content">
         {events.map((event, index) => (
-        <div key={index} className="header">
-      
+  <div key={index} className="header">
+    <div className="square-box">
+      <div className="box-content">
+        <span className="event-name">{event.eventName}</span>
+        <div className="event-details">
+          <p>Date: {event.eventDate}</p>
+          <p>Time: {event.eventTime}</p>
+          <p>Venue: {event.eventVenue}</p>
+          
+        </div>
+        <button className="clo" onClick={() => handleDecline(event)}>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
+        <button className="acc-button" onClick={() => handleAccept(event)}>Accept</button>
         
-        <div className="square-box">
-          <div className="box-content">
-            <span className="event-name">{event.eventName}</span>
-            <button className="close" onClick={()=> handleDecline(event)}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            <button className="accept-button" onClick={() => handleAccept(event)}>Accept</button>
-          </div>
-        </div>
-        </div>
-      ))}
+        
+      </div>
+    </div>
+  </div>
+))}
       </div>
       
           

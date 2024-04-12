@@ -87,12 +87,18 @@ const Home = () => {
             <div className="square-box">
               <div className="box-content">
                 <span className="event-name">{event.eventName}</span>
-              
+                
+                {/* <div className="event-details">
+          <p>Date: {event.eventDate}</p>
+          <p>Time: {event.eventTime}</p>
+          <p>Venue: {event.eventVenue}</p>
+          
+        </div> */}
            
-            <button className="close" onClick={()=> handleDecline(event)}>
+            <button className="clo" onClick={()=> handleDecline(event)}>
               <FontAwesomeIcon icon={faTimes} />
             </button>
-            <button className="accept-button" onClick={() => handleAccept(event)}>Accept</button>
+            <button className="acc-button" onClick={() => handleAccept(event)}>Accept</button>
           </div>
             </div>
 
@@ -117,6 +123,7 @@ const Home = () => {
         </div>
         <div className="square-box">
           <div className="box">
+            <span className="event-name">Schedule :</span>
             <span className="event-name">{event.eventDate}</span>
             <span className="event-name">{event.eventTime}</span>
             <span className="event-name">{event.eventVenue}</span>
