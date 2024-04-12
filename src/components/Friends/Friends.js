@@ -34,9 +34,12 @@ const Friends = () => {
   }, []); 
 
   
-  const handleDecline = async (e) => {
+  const handleDecline = async (request) => {
     try{
-      const response = await axios.delete(`http://localhost:8800/users/6617141ee2673858e0aede71/requests/suhaib123`);
+      const token = Cookies.get('token');
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
+      const response = await axios.delete(`http://localhost:8800/users/${userId}/requests/${request}`);
       
       
     }catch(error){
@@ -45,14 +48,17 @@ const Friends = () => {
 
     const handleAccept = async (e) => {
       try{
-        const response = await axios.delete(`http://localhost:8800/users/6617141ee2673858e0aede71/requests/suhaib123`);
+        const token = Cookies.get('token');
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
+        const response = await axios.delete(`http://localhost:8800/users/${userId}/requests/${request}`);
         
         
       }catch(error){
         console.log(error);
       }
       try{
-        const response = await axios.put(`http://localhost:8800/users/6617141ee2673858e0aede71/requests/suhaib123`);
+        const response = await axios.put(`http://localhost:8800/users/${userId}/requests/${request}`);
         
         
       }catch(error){
@@ -76,8 +82,8 @@ const Friends = () => {
                 <div className="friend-details">
                   <span className="username">{request}</span>
                   <div className="action-buttons">
-                    <button className="accept-button" onClick={handleAccept} >Accept</button>
-                    <button className="decline-button" onClick={handleDecline} >Decline</button>
+                    <button className="accept-button" onClick={()=>handleAccept(request)} >Accept</button>
+                    <button className="decline-button" onClick={() => handleDecline(request)}>Decline</button>
                   </div>
                 </div>
               </div>
