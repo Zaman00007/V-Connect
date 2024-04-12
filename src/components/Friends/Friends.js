@@ -81,7 +81,9 @@ const Friends = () => {
           <div key={index} className="header">
             
               <div  className="friend-request">
-                <div className="profile-photo"></div>
+                <div className="profile-photo">
+                <FontAwesomeIcon icon={faUserCircle} className='profile-photo' />
+                </div>
                 <div className="friend-details">
                   <span className="username">{request}</span>
                   <div className="action-buttons">
@@ -99,7 +101,9 @@ const Friends = () => {
           <div key={index} className="header">
             
               <div  className="friend-request">
-                <div className="profile-photo"></div>
+                <div className="profile-photo">
+                <FontAwesomeIcon icon={faUserCircle} className='profile-photo' />
+                </div>
                 <div className="friend-details">
                   <span className="username">{request}</span>
                   <div className="action-buttons">
