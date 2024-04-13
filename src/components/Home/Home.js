@@ -8,6 +8,9 @@ import Nav from "../Nav/Nav";
 import Cookies from 'js-cookie';
 import { jwtDecode } from "jwt-decode";
 import Dialog from './Dialog';
+// import {motion} from 'framer-motion';
+// import Tilt from "react-parallax-tilt"
+import { Tilt } from 'react-tilt'
 
 const Home = () => {
   const [loggedIn, setLoggedIn] = useState([]);
@@ -135,6 +138,7 @@ const Home = () => {
             <span className="trending-events-text">My Events</span>
           </div>
           {events.map((event, index) => (
+            <Tilt>
             <div key={index} className="header">
               <div className="square-box">
                 <div className="box-content">
@@ -151,6 +155,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            </Tilt>
           ))}
         </div>
       </div>
