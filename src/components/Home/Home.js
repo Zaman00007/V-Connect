@@ -5,14 +5,34 @@ import './Home.css';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import Nav from "../Nav/Nav";
+import Cookies from 'js-cookie';
+import { jwtDecode } from "jwt-decode";
 
 const Home = () => {
   
-  
+  const [loggedIn, setLoggedIn] = useState([]);
   const [events, setEvents] = useState([]);
   const [trend, setTrend] = useState([]);
   
-  
+  useEffect(() => {
+    const Logged = async () => {
+      try {
+      const token = Cookies.get('token');
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
+      console.log("User ID:", userId);
+      const response = await axios.get(`http://localhost:8800/users/${userId}`);
+      console.log("User:", response.data.user);
+      setLoggedIn(response.data.user);
+        
+      } catch (error) {
+        console.error('Error fetching friend requests:', error);
+      }
+    };
+    
+    Logged();
+    
+  }, []); 
   
   
   useEffect(() => {
@@ -129,7 +149,7 @@ const Home = () => {
             {/* <span className="event-name">{event.eventDate}</span> */}
             <span className="event-name">{event.eventTime}</span>
             <span className="event-name">{event.eventVenue}</span>
-            <span className="event-name">{event.inviteBy}</span>
+            <span className="event-name">By: {event.inviteBy}</span>
 
           </div>
         </div>

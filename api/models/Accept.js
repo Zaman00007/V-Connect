@@ -26,11 +26,11 @@ const EventSchema = new mongoose.Schema({
         type: String,
         
     },
-
     inviteBy:{
-        type: Schema.Types.ObjectId,
-        ref: "User"
+        type: String,
+        
     },
+    
 
     });
 

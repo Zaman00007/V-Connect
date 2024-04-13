@@ -53,7 +53,7 @@ const Createevents = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8800/events/', { ...formData, inviteBy: loggedIn._id }); // Include createdBy field with user data
+      const response = await axios.post('http://localhost:8800/events/', { ...formData, inviteBy: loggedIn.username }); 
 
       console.log('Event created:', response.data);
       history.push('/all');
