@@ -115,7 +115,7 @@ const Home = () => {
             </div>
           </div>
           {trend.slice(-2).map((event, index) => (
-            <Tilt key={index} >
+            
             <div key={index} className="header">
               <div className="square">
                 <div className="box-content">
@@ -130,7 +130,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            </Tilt>
+            
           ))}
         </div>
         <div className="main-content">

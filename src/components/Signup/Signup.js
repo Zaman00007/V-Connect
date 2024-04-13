@@ -24,10 +24,10 @@ const SignUp1 = () => {
       const response = await axios.post('http://localhost:8800/users/sign', userData);
       console.log('New user created:', response.data);
       history.push('/');
-      // Handle success response, like redirecting to another page or showing a success message
+      
     } catch (error) {
       console.error('Error creating user:', error);
-      // Handle error, like showing an error message to the user
+      
     }
   };
 

@@ -26,7 +26,7 @@ const Landing = () => {
       Cookies.set('token', response.data.token, { expires: 7 });
       
 
-      history.push('/events');
+      history.push('/home');
     } catch (error) {
       alert('Invalid username or password')
       console.error('Error logging in:', error);
