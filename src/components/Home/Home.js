@@ -8,8 +8,6 @@ import Nav from "../Nav/Nav";
 import Cookies from 'js-cookie';
 import { jwtDecode } from "jwt-decode";
 import Dialog from './Dialog';
-// import {motion} from 'framer-motion';
-// import Tilt from "react-parallax-tilt"
 import { Tilt } from 'react-tilt'
 
 const Home = () => {
@@ -117,6 +115,7 @@ const Home = () => {
             </div>
           </div>
           {trend.slice(-2).map((event, index) => (
+            <Tilt key={index} >
             <div key={index} className="header">
               <div className="square">
                 <div className="box-content">
@@ -131,6 +130,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            </Tilt>
           ))}
         </div>
         <div className="main-content">
@@ -138,8 +138,8 @@ const Home = () => {
             <span className="trending-events-text">My Events</span>
           </div>
           {events.map((event, index) => (
-            <Tilt>
-            <div key={index} className="header">
+            <Tilt key={index} >
+            <div className="header">
               <div className="square-box">
                 <div className="box-content">
                   <span className="event-name">{event.eventName}</span>
