@@ -115,13 +115,16 @@ const Home = () => {
           </div>
           {trend.slice(-2).map((event, index) => (
             <div key={index} className="header">
-              <div className="square-box">
+              <div className="square">
                 <div className="box-content">
                   <span className="event-name">{event.eventName}</span>
+                  <p>{event.description}</p>
+                  
+                  <button className="acc-button" onClick={() => handleAccept(event)}>Accept</button><br />
                   <button className="clo" onClick={() => handleDecline(event)}>
                     <FontAwesomeIcon icon={faTimes} />
                   </button>
-                  <button className="acc-button" onClick={() => handleAccept(event)}>Accept</button>
+                  
                 </div>
               </div>
             </div>
