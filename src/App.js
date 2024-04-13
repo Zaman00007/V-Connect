@@ -31,9 +31,9 @@ const App = () => {
           <Route path="/all" exact >
             <Allevents/>
           </Route>
-          <Route path="/about" exact >
+          {/* <Route path="/about" exact >
             <Aboutus/>
-          </Route>
+          </Route> */}
           <Route path="/Unauthorized" exact >
             <Unauthorized/>
           </Route>

@@ -27,6 +27,11 @@ const EventSchema = new mongoose.Schema({
         
     },
 
+    inviteBy:{
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    },
+
     });
 
     export default mongoose.model("Accept", EventSchema);

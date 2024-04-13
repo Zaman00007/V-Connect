@@ -33,6 +33,7 @@ const Home = () => {
         const response = await axios.get('http://localhost:8800/events/');
         setTrend(response.data);
         
+        
       } catch (error) {
         console.error('Error fetching events:', error);
       }}
@@ -76,6 +77,7 @@ const Home = () => {
     <div className="page-container">
       <Nav />
       <div className="content-container">
+        
         <div className="main-content">
         <div className="header">
             <div className="trending-events-bar">
@@ -124,12 +126,15 @@ const Home = () => {
         <div className="square-box">
           <div className="box">
             <span className="event-name">Schedule :</span>
-            <span className="event-name">{event.eventDate}</span>
+            {/* <span className="event-name">{event.eventDate}</span> */}
             <span className="event-name">{event.eventTime}</span>
             <span className="event-name">{event.eventVenue}</span>
+            <span className="event-name">{event.inviteBy}</span>
+
           </div>
         </div>
         </div>
+        
       ))}
       </div>
       </div>
