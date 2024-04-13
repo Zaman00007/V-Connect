@@ -8,7 +8,7 @@ const upload = multer();
 
 router.post('/sign', upload.single('profilePic'), async (req, res) => {
     try {
-        const { username, password } = req.body;
+        const { pname, username, password } = req.body;
 
         // Check if the username already exists
         const existingUser = await User.findOne({ username });
@@ -18,8 +18,10 @@ router.post('/sign', upload.single('profilePic'), async (req, res) => {
 
         
         const newUser = new User({
+            pname,
             username,
             password,
+            
         });
 
         

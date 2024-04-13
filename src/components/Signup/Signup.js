@@ -5,9 +5,10 @@ import { useHistory } from 'react-router-dom';
 
 const SignUp1 = () => {
   const [userData, setUserData] = useState({
-    name: '',
+    pname: '',
     username: '',
-    password: ''
+    password: '',
+  
   });
 
   const history = useHistory();
@@ -49,9 +50,9 @@ const SignUp1 = () => {
             id="button1"
             className="input-field"
             type="text"
-            name="name"
+            name="pname"
             placeholder="Enter your name"
-            value={userData.name}
+            value={userData.pname}
             onChange={handleChange}
           /><br/>
           <input
@@ -72,6 +73,7 @@ const SignUp1 = () => {
             value={userData.password}
             onChange={handleChange}
           /><br/>
+          
           <button type="submit" className="submit-button">Submit</button>
         </form>
       </div>

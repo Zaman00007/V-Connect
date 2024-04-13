@@ -48,7 +48,7 @@ const Profile = () => {
           {/* <img src="/" alt="Profile" className="profile-picture" /> */}
           <FontAwesomeIcon icon={faUserCircle} className='profile-picture' />
           <div className="profile-info">
-            <h2>{userData.name}</h2>
+            <h2>{userData.pname}</h2>
             <p>@{userData.username}</p>
             <button onClick={handleEditProfile}>Edit Profile</button>
           </div>
