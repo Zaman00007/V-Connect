@@ -66,7 +66,7 @@ const Profile = () => {
 
         </div>
       </div>
-      {showModal && <Edit handleClose={handleCloseModal} />} 
+      {showModal && <Edit handleClose={handleCloseModal} userId={loggedIn}/>} 
     </div>
   );
 };

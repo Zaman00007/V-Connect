@@ -195,4 +195,36 @@ try{
   
 });
 
+
+
+router.put('/update/:userId', async (req, res) => {
+  const userId = req.params.userId;
+  const { username, bio, password } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    if (username) {
+      user.username = username;
+    }
+    if (bio) {
+      user.bio = bio;
+    }
+    if (password) {
+      user.password = password;
+    }
+
+    await user.save();
+
+    res.status(200).json({ message: 'User profile updated successfully' });
+  } catch (error) {
+    console.error('Error updating user profile:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 export default router;

@@ -1,11 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Edit.css';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import {jwtDecode} from 'jwt-decode';
 
 const Edit = ({ handleClose }) => {
   const [username, setUsername] = useState('');
   const [bio, setBio] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [userId, setUserId] = useState('');
+
+  useEffect(() => {
+    const Logged = async () => {
+      try {
+        const token = Cookies.get('token');
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.id;
+        console.log("User ID:", userId);
+        setUserId(userId);
+        
+      } catch (error) {
+        console.error('Error fetching friend requests:', error);
+      }
+    };
+
+    Logged();
+
+  }, []);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -23,9 +45,21 @@ const Edit = ({ handleClose }) => {
     setConfirmPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    
+    try {
+        const response = await axios.put(`http://localhost:8800/users/update/${userId}`, {
+          username,
+          bio,
+          password
+        });
+        
+        console.log(response.data); 
+
+      } catch (error) {
+        console.error('Error updating user profile:', error);
+      }
+    handleClose();
   };
 
   return (

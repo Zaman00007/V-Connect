@@ -21,6 +21,9 @@ const UserSchema = new mongoose.Schema({
     friends: {
         type: [String],
     },
+    bio: {
+        type: String,
+    },
 });
 
 UserSchema.methods.updateRequests = async function(newRequest) {
