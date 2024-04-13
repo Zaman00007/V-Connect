@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+// import { useSelector } from 'react-redux'; // Import useSelector hook
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUserCircle, faCog, faTimes } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios'; 
 import './Createevents.css';
 import Nav from '../Nav/Nav';
+import Cookies from 'js-cookie';  
+import {jwtDecode} from 'jwt-decode';
 
 const Createevents = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +19,32 @@ const Createevents = () => {
     description: ''
   });
 
+  const [loggedIn, setLoggedIn] = useState([]);
+
+  
+  useEffect(() => {
+    const Logged = async () => {
+      try {
+      const token = Cookies.get('token');
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
+      console.log("User ID:", userId);
+      const response = await axios.get(`http://localhost:8800/users/${userId}`);
+      console.log("User:", response.data.user);
+      setLoggedIn(response.data.user);
+        
+      } catch (error) {
+        console.error('Error fetching friend requests:', error);
+      }
+    };
+    
+    Logged();
+    
+  }, []); 
+
+
+  const history = useHistory();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -24,7 +53,7 @@ const Createevents = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8800/events/', formData);
+      const response = await axios.post('http://localhost:8800/events/', { ...formData, inviteBy: loggedIn._id }); // Include createdBy field with user data
 
       console.log('Event created:', response.data);
       history.push('/all');
@@ -35,8 +64,6 @@ const Createevents = () => {
       
     }
   };
-  const history = useHistory();
-  
 
   return (
     <div className="page-container">
@@ -47,6 +74,8 @@ const Createevents = () => {
           <div className="header">
             <form className="event-form" onSubmit={handleSubmit}>
               <h2>Create an Event</h2>
+              
+              {/* <p>Invite by: {user.name}</p> */}
               <div className="input-group">
                 <label>Event Name:</label>
                 <input type="text" name="eventName" value={formData.eventName} onChange={handleChange} />
