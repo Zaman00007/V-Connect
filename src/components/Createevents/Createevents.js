@@ -71,11 +71,11 @@ const Createevents = () => {
       <div className="content-container">
         
         <div className="main-content">
-          <div className="header">
+          <div className="">
             <form className="event-form" onSubmit={handleSubmit}>
               <h2>Create an Event</h2>
               
-              {/* <p>Invite by: {user.name}</p> */}
+              
               <div className="input-group">
                 <label>Event Name:</label>
                 <input type="text" name="eventName" value={formData.eventName} onChange={handleChange} />

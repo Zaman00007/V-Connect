@@ -14,7 +14,7 @@ const Home = () => {
   const [events, setEvents] = useState([]);
   const [trend, setTrend] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
-  const [user, setUser] = useState(null); // Use null instead of an empty array
+  const [user, setUser] = useState(null); 
 
   useEffect(() => {
     const Logged = async () => {
