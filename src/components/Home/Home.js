@@ -139,6 +139,7 @@ const Home = () => {
               <div className="square-box">
                 <div className="box-content">
                   <span className="event-name">{event.eventName}</span>
+                  <span className="eventby">{event.description}</span>
                 </div>
               </div>
               <div className="square-box">
