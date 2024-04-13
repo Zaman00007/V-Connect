@@ -55,6 +55,9 @@ function Nav() {
       });
   }
 
+  const handleUser = () => {
+    history.push('/profile');
+  }
   const handleCloseDialog = () => {
     setShowDialog(false);
     setUser(null);
@@ -113,7 +116,7 @@ function Nav() {
         <FontAwesomeIcon icon={faUserCircle} className="bell" onClick={handleUserDropdown} />
         {showUserDropdown && (
           <div className="dropdown-content">
-            <button>{loggedIn.username}</button>
+            <button className="dropdown-item" onClick={handleUser}>{loggedIn.username}</button>
             <button className="dropdown-item" onClick={handleLogout}>Logout</button>
           </div>
         )}

@@ -5,7 +5,7 @@ import Createevents from './components/Createevents/Createevents'
 import Friends from './components/Friends/Friends'
 import Signup from './components/Signup/Signup'
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Aboutus from './components/Aboutus/Aboutus'
+import Profile from './components/Profile/Profile'
 import Home from './components/Home/Home'
 import PrivateRoute from "./PrivateRoute";
 import Unauthorized from './Unauthorized'
@@ -31,9 +31,9 @@ const App = () => {
           <Route path="/all" exact >
             <Allevents/>
           </Route>
-          {/* <Route path="/about" exact >
-            <Aboutus/>
-          </Route> */}
+          <Route path="/profile" exact >
+            <Profile/>
+          </Route>
           <Route path="/Unauthorized" exact >
             <Unauthorized/>
           </Route>
