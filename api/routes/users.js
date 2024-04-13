@@ -199,7 +199,7 @@ try{
 
 router.put('/update/:userId', async (req, res) => {
   const userId = req.params.userId;
-  const { username, bio, password } = req.body;
+  const { username, bio, password, mobile } = req.body;
 
   try {
     const user = await User.findById(userId);
@@ -215,6 +215,9 @@ router.put('/update/:userId', async (req, res) => {
     }
     if (password) {
       user.password = password;
+    }
+    if (mobile) {
+      user.mobile = mobile;
     }
 
     await user.save();

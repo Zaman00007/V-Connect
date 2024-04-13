@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './Edit.css';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 const Edit = ({ handleClose }) => {
   const [username, setUsername] = useState('');
   const [bio, setBio] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [mobile, setMobile] = useState('');
   const [userId, setUserId] = useState('');
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const Edit = ({ handleClose }) => {
         const userId = decodedToken.id;
         console.log("User ID:", userId);
         setUserId(userId);
-        
+
       } catch (error) {
         console.error('Error fetching friend requests:', error);
       }
@@ -45,20 +46,25 @@ const Edit = ({ handleClose }) => {
     setConfirmPassword(event.target.value);
   };
 
+  const handleMobileChange = (event) => {
+    setMobile(event.target.value);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-        const response = await axios.put(`http://localhost:8800/users/update/${userId}`, {
-          username,
-          bio,
-          password
-        });
-        
-        console.log(response.data); 
+      const response = await axios.put(`http://localhost:8800/users/update/${userId}`, {
+        username,
+        bio,
+        password,
+        mobile 
+      });
 
-      } catch (error) {
-        console.error('Error updating user profile:', error);
-      }
+      console.log(response.data);
+
+    } catch (error) {
+      console.error('Error updating user profile:', error);
+    }
     handleClose();
     window.location.reload();
   };
@@ -66,10 +72,10 @@ const Edit = ({ handleClose }) => {
   return (
     <div className="modal-overlay">
       <div className="modal">
-        
+
         <div className="modal-content">
           <h2>Edit Profile</h2>
-          
+
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="username">Username:</label>
@@ -90,6 +96,17 @@ const Edit = ({ handleClose }) => {
                 className='textarea'
                 onChange={handleBioChange}
                 placeholder="Enter your bio"
+              />
+            </div>
+            <div className="form-group">
+              <label className='label' htmlFor="mobile">Mobile:</label>
+              <input
+                type="text"
+                id="mobile"
+                value={mobile}
+                className='input'
+                onChange={handleMobileChange}
+                placeholder="Enter your mobile number"
               />
             </div>
             <div className="form-group">
@@ -114,7 +131,7 @@ const Edit = ({ handleClose }) => {
                 placeholder="Confirm new password"
               />
             </div>
-            
+
             <button type="submit">Save Changes</button>
             {/* <button type="close" onClick={handleClose}>Close</button> */}
           </form>
