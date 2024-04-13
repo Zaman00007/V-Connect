@@ -24,6 +24,9 @@ const UserSchema = new mongoose.Schema({
     bio: {
         type: String,
     },
+    mobile:{
+        type: String,
+    }
 });
 
 UserSchema.methods.updateRequests = async function(newRequest) {
