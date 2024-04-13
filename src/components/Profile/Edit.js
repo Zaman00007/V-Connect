@@ -77,6 +77,7 @@ const Edit = ({ handleClose }) => {
                 type="text"
                 id="username"
                 value={username}
+                className='input'
                 onChange={handleUsernameChange}
                 placeholder="Enter new username"
               />
@@ -86,6 +87,7 @@ const Edit = ({ handleClose }) => {
               <textarea
                 id="bio"
                 value={bio}
+                className='textarea'
                 onChange={handleBioChange}
                 placeholder="Enter your bio"
               />
@@ -95,6 +97,7 @@ const Edit = ({ handleClose }) => {
               <input
                 type="password"
                 id="password"
+                className='input'
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Enter new password"
@@ -105,6 +108,7 @@ const Edit = ({ handleClose }) => {
               <input
                 type="password"
                 id="confirmPassword"
+                className='input'
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
                 placeholder="Confirm new password"
