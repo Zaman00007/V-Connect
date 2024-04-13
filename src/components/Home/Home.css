@@ -164,12 +164,9 @@
   }
   
   
-  .clo,
-  .acc-button {
-    /* border: none;
-    background: none;
-    cursor: pointer;
-    color: white; */
+  .cl,
+  .ac-button {
+    
     background-color: #007bff; 
     color: white;
     border: none;

@@ -120,8 +120,8 @@ const Home = () => {
                   <span className="event-name">{event.eventName}</span>
                   <p>{event.description}</p>
                   
-                  <button className="acc-button" onClick={() => handleAccept(event)}>Accept</button><br />
-                  <button className="clo" onClick={() => handleDecline(event)}>
+                  <button className="ac-button" onClick={() => handleAccept(event)}>Accept</button><br />
+                  <button className="cl" onClick={() => handleDecline(event)}>
                     <FontAwesomeIcon icon={faTimes} />
                   </button>
                   
