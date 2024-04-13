@@ -146,7 +146,7 @@ const Home = () => {
                   <span className="event-name">Schedule :</span>
                   <span className="event-name">{event.eventTime}</span>
                   <span className="event-name">{event.eventVenue}</span>
-                  <span className="event-name" onClick={() => handleContact(event.inviteBy)}>By:{event.inviteBy}</span>
+                  <span className="eventby" onClick={() => handleContact(event.inviteBy)}>By:{event.inviteBy}</span>
                 </div>
               </div>
             </div>
