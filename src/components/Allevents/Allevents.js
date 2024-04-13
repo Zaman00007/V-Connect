@@ -58,7 +58,7 @@ const Allevents = () => {
         <div className="main-content">
         {events.map((event, index) => (
   <div key={index} className="header">
-    <div className="square-box">
+    <div className="square">
       <div className="box-content">
         <span className="event-name">{event.eventName}</span>
         <div className="event-details">
@@ -67,10 +67,15 @@ const Allevents = () => {
           <p>Venue: {event.eventVenue}</p>
           
         </div>
+        <div className="event-details">
+          <p>Description: {event.description}</p>
+          
+        </div>
+        
+        <button className="acc-button" onClick={() => handleAccept(event)}>Accept</button>
         <button className="clo" onClick={() => handleDecline(event)}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
-        <button className="acc-button" onClick={() => handleAccept(event)}>Accept</button>
         
         
       </div>
