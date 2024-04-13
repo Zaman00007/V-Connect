@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import { useSelector } from 'react-redux'; // Import useSelector hook
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClock, faUserFriends, faPlus, faBars, faSearch, faBell, faUserCircle, faCog, faTimes } from '@fortawesome/free-solid-svg-icons';
