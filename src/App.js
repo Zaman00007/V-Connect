@@ -24,14 +24,14 @@ const App = () => {
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.id;
         console.log("User ID:", userId);
-        const response = await axios.get(`http://localhost:8800/users/${userId}`);
+        // const response = await axios.get(`http://localhost:8800/users/${userId}`);
         // console.log("User:", response.data.user);
-        if(response.ok){
+        if(userId){
           setLogin(true);
         }
-        setLoggedIn(response.data.user);
+        // setLoggedIn(response.data.user);
       } catch (error) {
-        console.error('Error fetching friend requests:', error);
+        console.error('Error fetching Login details', error);
       }
     };
 
@@ -46,27 +46,31 @@ const App = () => {
             <Landing/>
           </Route>
           <Route path="/friend" exact >
-          {login ? <Friends/> : <Redirect to="/"/>}
+           <Friends/> 
             
           </Route>
           <Route path="/signup" exact >
-            <Signup/>
+           <Signup/> 
+            
           </Route>
           <PrivateRoute path="/home" exact >
             <Home/>
           </PrivateRoute>
           <Route path="/all" exact >
-            <Allevents/>
+           <Allevents/> 
+            
           </Route>
           <Route path="/profile" exact >
-            <Profile/>
+           <Profile/> 
+            
           </Route>
           <Route path="/Unauthorized" exact >
             <Unauthorized/>
           </Route>
           
           <Route path="/events" exact >
-            <Createevents/>
+            <Createevents/> 
+            
           </Route>
         </Switch>
       </Router>
