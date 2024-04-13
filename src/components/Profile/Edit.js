@@ -60,6 +60,7 @@ const Edit = ({ handleClose }) => {
         console.error('Error updating user profile:', error);
       }
     handleClose();
+    window.location.reload();
   };
 
   return (

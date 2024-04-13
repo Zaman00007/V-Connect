@@ -54,13 +54,13 @@ const Profile = () => {
         <div className="profile-header">
           <FontAwesomeIcon icon={faUserCircle} className='profile-picture' />
           <div className="profile-info">
-            <h2>{userData.pname}</h2>
+            <h2 className='pname'>{userData.pname}</h2>
             <p>@{userData.username}</p>
             <button onClick={handleEditProfile}>Edit Profile</button>
           </div>
         </div>
         <div className="profile-bio">
-          <p>{userData.bio}</p>
+          <p className='pname'>{userData.bio}</p>
         </div>
         <div className="profile-posts">
 
