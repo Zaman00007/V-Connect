@@ -67,11 +67,12 @@ router.get('/:id', async (req, res) => {
 });
 
 
-  router.get('/accept', async (req, res) => {
+  router.get('/accept/:id', async (req, res) => {
     try {
-      const events = await Accept.find();
-      
-
+      // const events = await Accept.find();
+      const user = await User.findById(req.params.id)
+      const eventNames = user.accepted;
+      const events = await Event.find({ eventName: { $in: eventNames } });
       res.status(200).json(events);
     } catch (error) {
       console.error(error);
