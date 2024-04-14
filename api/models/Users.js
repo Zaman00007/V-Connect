@@ -26,6 +26,9 @@ const UserSchema = new mongoose.Schema({
     },
     mobile:{
         type: String,
+    },
+    accepted:{
+        type: [String]
     }
 });
 

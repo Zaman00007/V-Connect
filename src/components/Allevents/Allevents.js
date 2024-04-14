@@ -5,6 +5,8 @@ import './Allevents.css';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'; 
 import Nav from '../Nav/Nav';
+import Cookies from 'js-cookie';
+import { jwtDecode } from "jwt-decode";
 
 
 
@@ -14,7 +16,10 @@ const Allevents = () => {
   useEffect(() => {
   const getEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:8800/events/');
+      const token = Cookies.get('token');
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
+      const response = await axios.get(`http://localhost:8800/events/${userId}`);
       setEvents(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -26,19 +31,22 @@ const Allevents = () => {
 
   const handleAccept = async (e) => {
     try{
-      const response = await axios.post('http://localhost:8800/events/accept', e);
+      const token = Cookies.get('token');
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
+      const response = await axios.post(`http://localhost:8800/events/accept/${userId}`, e);
       
       console.log("accept button clicked ", e._id);
       alert('Event Accepted');
     }catch(error){
       console.log(error);
     }
-    try{
-      const response = await axios.delete(`http://localhost:8800/events/delete/${e._id}`);
+    // try{
+    //   const response = await axios.delete(`http://localhost:8800/events/delete/${e._id}`);
       
-    }catch(error){
-      console.log(error);
-    } 
+    // }catch(error){
+    //   console.log(error);
+    // } 
     
   };
   const handleDecline = async (e) => {
